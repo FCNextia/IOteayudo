@@ -1,4 +1,4 @@
-# LeeTris
+# IOteayudo
 Repositorio para la aplicación IOteayudo, desarrollado con el grupo el equipo
 Nextia en el curso de Ingeniería de Software.
 
