@@ -7,12 +7,12 @@ contacto a estudiantes de bachillerato con profesores interesados en brindar
 asesorías del nivel.
 
 ####Yoshua Ian Alfaro Mendoza
-	Responsable de calidad
+	Responsable de calidad / Desarrollador
 ####Luis Daniel López Monroy
-	Responsable técnico
+	Responsable técnico / Desarrollador
 ####David Alejandro Nieto Andrade
-	Responsable técnico
+	Responsable técnico / Desarrollador
 ####Manuel Soto Romero
-    Responsable del equipo
+    Responsable del equipo / Desarrollador
 ####Ricardo Taboada Magallanes
-	Responsable de colaboración
+	Responsable de colaboración / Desarrollador
