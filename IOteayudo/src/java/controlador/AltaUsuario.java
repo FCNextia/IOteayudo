@@ -56,6 +56,12 @@ public class AltaUsuario {
      * @return Dirección de la vista perfil.
      */
     public String darDeAlta() {
+        if (isEsAlumno())
+            return "pantallainicial";
+        else
+            return "registro";
+        /*
+        faceContext.addMessage(null, message);
         if (getContrasenia().equals(getConfirmacion())) {
             Usuario us = new Usuario();
             // algo ...
@@ -65,7 +71,9 @@ public class AltaUsuario {
             faceContext.addMessage(null, message);
             return "registro";
         }
-        return "pantallainicial";
+        System.out.print(Boolean.toString(esAlumno));
+        return "registro";
+        */
     }
     
     /* MÉTODOS DE MODIFICADORES Y DE ACCESO PARA COMUNICARNOS CON LA VISTA */
