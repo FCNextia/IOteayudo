@@ -10,7 +10,7 @@ CREATE TABLE usuario (
 
 CREATE TABLE alumno (
 	id_usuario INTEGER NOT NULL,
-	edad_alumno INTEGER,
+	fecha_nacimiento_alumno INTEGER,
 	CHECK(edad_alumno >= 15),
 	FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),
 	PRIMARY KEY(id_usuario));
