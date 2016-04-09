@@ -1,5 +1,5 @@
 package modelo;
-// Generated 9/04/2016 12:14:27 AM by Hibernate Tools 4.3.1
+// Generated 9/04/2016 10:24:29 AM by Hibernate Tools 4.3.1
 
 
 
@@ -24,11 +24,12 @@ public class Usuario  implements java.io.Serializable {
     }
 
 	
-    public Usuario(int idUsuario, String correoUsuario, String nombreUsuario, String apellidoPaternoUsuario, String contraseniaUsuario, int telefonoUsuario, String acercaDeUsuario) {
+    public Usuario(int idUsuario, String correoUsuario, String nombreUsuario, String apellidoPaternoUsuario, String apellidoMaternoUsuario, String contraseniaUsuario, int telefonoUsuario, String acercaDeUsuario) {
         this.idUsuario = idUsuario;
         this.correoUsuario = correoUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoPaternoUsuario = apellidoPaternoUsuario;
+        this.apellidoMaternoUsuario = apellidoMaternoUsuario;
         this.contraseniaUsuario = contraseniaUsuario;
         this.telefonoUsuario = telefonoUsuario;
         this.acercaDeUsuario = acercaDeUsuario;
