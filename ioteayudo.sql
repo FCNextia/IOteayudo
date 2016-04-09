@@ -12,7 +12,7 @@ CREATE TABLE usuario (
 CREATE TABLE alumno (
 	id_usuario INTEGER NOT NULL,
 	fecha_nacimiento_alumno INTEGER,
-	CHECK(edad_alumno >= 15),
+	CHECK(fecha_nacimiento_alumno >= 15),
 	FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),
 	PRIMARY KEY(id_usuario));
 
@@ -22,15 +22,16 @@ CREATE TABLE tutor (
 	FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),
 	PRIMARY KEY(id_usuario));
 
-CREATE TABLE tutor_curso (
-	id_usuario INTEGER NOT NULL,
-	nombre_curso VARCHAR(255) NOT NULL,
-	FOREIGN KEY(id_usuario) REFERENCES tutor(id_usuario),
-	PRIMARY KEY(id_usuario));
+CREATE TABLE materia (
+	id_materia INTEGER NOT NULL,
+	nombre_materia VARCHAR(255) NOT NULL,
+	area_materia INTEGER,
+	CHECK(area_materia >= 1 and area_materia <= 4),
+	PRIMARY KEY(id_materia));
 
-CREATE TABLE tutor_area (
+CREATE TABLE tutor_materia (
 	id_usuario INTEGER NOT NULL,
-	nombre_area VARCHAR(255) NOT NULL,
-	CHECK(nombre_area IN ('A1', 'A2', 'A3', 'A4')),
-	FOREIGN KEY (id_usuario) REFERENCES tutor(id_usuario),
+	id_materia INTEGER NOT NULL,
+	FOREIGN KEY(id_usuario) REFERENCES tutor(id_usuario),
+	FOREIGN KEY(id_materia) REFERENCES materia(id_materia),
 	PRIMARY KEY(id_usuario));
