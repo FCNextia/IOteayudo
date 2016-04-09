@@ -1,16 +1,25 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Configuración</title>
+    </h:head>
+    <h:body>
+        <h:form class="formulario">
+            <h2>Configuración</h2>
+            <p>Por favor, llena los siguientes campos: </p>
+            <p><h:inputText pt:placeholder="Correo electrónico: " value="#{actualizarDatosAlumno.correo}"/></p>
+            <p><h:inputText pt:placeholder="Contrasena: " value="#{actualizarDatosAlumno.contrasenia}"/></p>
+            <p><h:inputText pt:placeholder="Confirma tu contraseña: " value="#{actualizarDatosAlumno.confirmacion}"/></p>
+            <p><h:inputText pt:placeholder="Nombre: " value="#{actualizarDatosAlumno.nombre}"/></p>
+            <p><h:inputText pt:placeholder="Apellido paterno: " value="#{actualizarDatosAlumno.apellidop}"/></p>
+            <p><h:inputText pt:placeholder="Apellido materno: " value="#{actualizarDatosAlumno.apellidom}"/></p>
+            <p><h:inputText pt:placeholder="Fecha de nacimiento: " value="#{actualizarDatosAlumno.fechaNacimiento}"/></p>
+            <p><h:inputText pt:placeholder="Teléfono celular: " value="#{actualizarDatosAlumno.celular}"/></p>
+            <p><h:inputTextarea pt:placeholder="Acerca de ti: " value="#{actualizarDatosAlumno.acercaDeMi}"/></p>
+            <h:commandButton value="Actualizar Datos" action="#{actualizarDatosAlumno.actualizarDatos()}"/>
+        </h:form>
+    </h:body>
 </html>
