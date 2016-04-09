@@ -1,6 +1,7 @@
 CREATE TABLE usuario (
 	id_usuario INTEGER NOT NULL,
 	correo_usuario VARCHAR(255) NOT NULL,
+	nombre_usuario VARCHAR(255) NOT NULL,
 	apellido_paterno_usuario VARCHAR(255) NOT NULL,
 	apellido_materno_usuario VARCHAR(255),
 	contrasenia_usuario VARCHAR(15) NOT NULL,
