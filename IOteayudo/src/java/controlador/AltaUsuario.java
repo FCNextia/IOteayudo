@@ -56,16 +56,16 @@ public class AltaUsuario {
      * @return Dirección de la vista perfil.
      */
     public String darDeAlta() {
-        if (contrasenia.equals(confirmacion)) {
+        if (getContrasenia().equals(getConfirmacion())) {
             Usuario us = new Usuario();
             // algo ...
         } else {
             message = new FacesMessage(FacesMessage.SEVERITY_ERROR, 
                     "Las contraseñas no coinciden", null);
             faceContext.addMessage(null, message);
-            return "#";
+            return "registro";
         }
-        return "#";
+        return "pantallainicial";
     }
     
     /* MÉTODOS DE MODIFICADORES Y DE ACCESO PARA COMUNICARNOS CON LA VISTA */

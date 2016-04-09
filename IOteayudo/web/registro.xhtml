@@ -10,12 +10,18 @@
         <h:form class="formulario">
             <h2>Registro</h2>
             <p>Por favor, llena los siguientes campos: </p>
-            <!--
-            <p><h:inputText pt:placeholder="Correo electrónico: " value="#{registro.correo}"/></p>
-            <p><h:inputSecret pt:placeholder="Contraseña" value="#{registro.contrasenia}"/></p>
-            <p><h:inputSecret pt:placeholder="Confirmación" value="#{registro.confirmacion}"/></p>
-            <h:commandButton value="Registrarse" action="#{registro.registrar()}"/>
+            <!-- Este campo sólo es una prueba, el id se genera automáticamente -->
+            <p><h:inputText pt:placeholder="ID: " value="#{altaUsuario.id}"/></p>
+            <p><h:inputText pt:placeholder="Correo electrónico: " value="#{altaUsuario.correo}"/></p>
+            <p><h:inputText pt:placeholder="Contrasena: " value="#{altaUsuario.contrasenia}"/></p>
+            <p><h:inputText pt:placeholder="Confirma tu contraseña: " value="#{altaUsuario.confirmacion}"/></p>
+            <p><h:inputText pt:placeholder="Nombre: " value="#{altaUsuario.nombre}"/></p>
+            <p><h:inputText pt:placeholder="Apellido paterno: " value="#{altaUsuario.apellidop}"/></p>
+            <p><h:inputText pt:placeholder="Apellido materno: " value="#{altaUsuario.apellidom}"/></p>
+            <!-- Aquí debe ir un checkbox.
+            <p><h:selectManyCheckbox></h:selectManyCheckbox></p>
             -->
+            <h:commandButton value="Registrarse" action="#{altaUsuario.darDeAlta()}"/>
         </h:form>
     </h:body>
 </html>
