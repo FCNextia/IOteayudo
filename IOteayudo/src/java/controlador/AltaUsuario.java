@@ -5,6 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import logic.RegistroHelper;
 import modelo.Usuario;
 
 /**
@@ -40,6 +41,7 @@ public class AltaUsuario {
     private final FacesContext faceContext;
     /* Permite el envio de mensajes entre el bean y la vista. */
     private FacesMessage message;
+    private RegistroHelper helper;
     
     /**
      * Constructor por omisión.
@@ -47,33 +49,17 @@ public class AltaUsuario {
      */
     public AltaUsuario() {
         faceContext = FacesContext.getCurrentInstance();
-        httpServletRequest = 
-                (HttpServletRequest)faceContext.getExternalContext().getRequest();
+        httpServletRequest = (HttpServletRequest) faceContext.getExternalContext().getRequest();
+        helper = new RegistroHelper();
     }
     
     /**
      * Da de alta al usuario y lo redirige a su perfil.
      * @return Dirección de la vista perfil.
      */
-    public String darDeAlta() {
-        if (isEsAlumno())
-            return "pantallainicial";
-        else
-            return "registro";
-        /*
-        faceContext.addMessage(null, message);
-        if (getContrasenia().equals(getConfirmacion())) {
-            Usuario us = new Usuario();
-            // algo ...
-        } else {
-            message = new FacesMessage(FacesMessage.SEVERITY_ERROR, 
-                    "Las contraseñas no coinciden", null);
-            faceContext.addMessage(null, message);
-            return "registro";
-        }
-        System.out.print(Boolean.toString(esAlumno));
-        return "registro";
-        */
+    public void darDeAlta() {
+
+        helper.registra(id,correo,contrasenia,nombre,apellidop,apellidom);
     }
     
     /* MÉTODOS DE MODIFICADORES Y DE ACCESO PARA COMUNICARNOS CON LA VISTA */
