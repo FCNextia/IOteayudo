@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9/04/2016 12:14:28 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.TutorMateria" table="tutor_materia" schema="public" optimistic-lock="version">
+        <id name="idUsuario" type="int">
+            <column name="id_usuario" />
+            <generator class="foreign">
+                <param name="property">tutor</param>
+            </generator>
+        </id>
+        <many-to-one name="materia" class="modelo.Materia" fetch="select">
+            <column name="id_materia" not-null="true" />
+        </many-to-one>
+        <one-to-one name="tutor" class="modelo.Tutor" constrained="true"></one-to-one>
+    </class>
+</hibernate-mapping>

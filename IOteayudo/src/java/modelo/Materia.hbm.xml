@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9/04/2016 12:14:28 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Materia" table="materia" schema="public" optimistic-lock="version">
+        <id name="idMateria" type="int">
+            <column name="id_materia" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreMateria" type="string">
+            <column name="nombre_materia" not-null="true" />
+        </property>
+        <property name="areaMateria" type="java.lang.Integer">
+            <column name="area_materia" />
+        </property>
+        <set name="tutorMaterias" table="tutor_materia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_materia" not-null="true" />
+            </key>
+            <one-to-many class="modelo.TutorMateria" />
+        </set>
+    </class>
+</hibernate-mapping>

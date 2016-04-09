@@ -1,3 +1,9 @@
+CREATE DATABASE IOteayudo
+   WITH OWNER = postgres
+      ENCODING = 'UTF8'
+      TABLESPACE = pg_default
+      CONNECTION LIMIT = -1;
+
 CREATE TABLE usuario (
 	id_usuario INTEGER NOT NULL,
 	correo_usuario VARCHAR(255) NOT NULL,
