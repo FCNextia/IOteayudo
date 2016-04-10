@@ -63,8 +63,8 @@ public class AltaUsuario {
      * Da de alta al usuario y lo redirige a su perfil.
      * @return Dirección de la vista perfil.
      */
-    public String darDeAlta() {
-        return "registro";
+    public void darDeAlta() {
+        rh.registra(id, correo, nombre, apellidop, apellidom, contrasenia);
     }
     
     /* MÉTODOS DE MODIFICADORES Y DE ACCESO PARA COMUNICARNOS CON LA VISTA */

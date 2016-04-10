@@ -18,6 +18,20 @@ public class RegistroHelper {
     }
 
     public void registra(int id, String correo, String nombre, String apellidoPa, String apellidoMa, String contrasenia){
-       // session.beginTransaction();
+       Session session = HibernateUtil.getSessionFactory().openSession();
+       session.beginTransaction();
+       Usuario usuario = new Usuario();
+       
+       usuario.setIdUsuario(id);
+       usuario.setCorreoUsuario(correo);
+       usuario.setNombreUsuario(nombre);
+       usuario.setApellidoPaternoUsuario(apellidoPa);
+       usuario.setApellidoMaternoUsuario(apellidoMa);
+       usuario.setContraseniaUsuario(contrasenia);
+       session.save(usuario);
+ 
+        //Commit the transaction
+       session.getTransaction().commit();
+       HibernateUtil.shutdown();
     }
 }
