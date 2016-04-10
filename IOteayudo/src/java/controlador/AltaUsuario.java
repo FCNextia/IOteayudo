@@ -5,10 +5,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import logic.RegistroHelper;
 import modelo.Usuario;
 import org.hibernate.HibernateException; 
 import org.hibernate.Session; 
 import org.hibernate.Transaction;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 /**
  * Controlador que permite agregar un usuario a la base de datos.
@@ -43,6 +46,8 @@ public class AltaUsuario {
     private final FacesContext faceContext;
     /* Permite el envio de mensajes entre el bean y la vista. */
     private FacesMessage message;
+    private SessionFactory factory; 
+    private RegistroHelper rh;
     
     /**
      * Constructor por omisión.
@@ -51,6 +56,7 @@ public class AltaUsuario {
     public AltaUsuario() {
         faceContext = FacesContext.getCurrentInstance();
         httpServletRequest = (HttpServletRequest)faceContext.getExternalContext().getRequest();
+        rh = new RegistroHelper();
     }
     
     /**
