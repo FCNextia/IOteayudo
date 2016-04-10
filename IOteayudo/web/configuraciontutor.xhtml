@@ -1,16 +1,32 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Configuración</title>
+    </h:head>
+    <h:body>
+        <h:form class="formulario">
+            <h2>Configuración</h2>
+            <p>Por favor, llena los siguientes campos: </p>
+            <p><h:inputText pt:placeholder="Correo electrónico: " value="#{actualizarDatosTutor.correo}"/></p>
+            <p><h:inputText pt:placeholder="Contrasena: " value="#{actualizarDatosTutor.contrasenia}"/></p>
+            <p><h:inputText pt:placeholder="Confirma tu contraseña: " value="#{actualizarDatosTutor.confirmacion}"/></p>
+            <p><h:inputText pt:placeholder="Nombre: " value="#{actualizarDatosTutor.nombre}"/></p>
+            <p><h:inputText pt:placeholder="Apellido paterno: " value="#{actualizarDatosTutor.apellidop}"/></p>
+            <p><h:inputText pt:placeholder="Apellido materno: " value="#{actualizarDatosTutor.apellidom}"/></p>
+            <p><h:inputText pt:placeholder="Teléfono celular: " value="#{actualizarDatosTutor.celular}"/></p>
+            <p><h:inputTextarea pt:placeholder="Acerca de ti: " value="#{actualizarDatosTutor.acercaDeMi}"/></p>
+            <h:commandButton value="Actualizar Datos" action="#{actualizarDatosTutor.actualizarDatos()}"/>
+        </h:form>
+        
+        <h:form class="formulario2">
+            <h2>Nuevas materias</h2>
+            <p>Por favor, llena los siguientes campos: </p>
+            <p><h:inputText pt:placeholder="Nombre: " value="#{actualizarDatosTutor.nuevoCurso}"/></p>
+            <p><h:inputText pt:placeholder="Área (1, 2, 3 ó 4): " value="#{actualizarDatosTutor.nuevaArea}"/></p>
+        </h:form>
+        <h:commandButton value="Agregar materia" action="#{actualizarDatosTutor.actualizarDatos()}"/>
+    </h:body>
 </html>
