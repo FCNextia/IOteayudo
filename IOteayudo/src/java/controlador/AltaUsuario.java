@@ -5,8 +5,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
-import logic.RegistroHelper;
 import modelo.Usuario;
+import org.hibernate.HibernateException; 
+import org.hibernate.Session; 
+import org.hibernate.Transaction;
 
 /**
  * Controlador que permite agregar un usuario a la base de datos.
@@ -41,7 +43,6 @@ public class AltaUsuario {
     private final FacesContext faceContext;
     /* Permite el envio de mensajes entre el bean y la vista. */
     private FacesMessage message;
-    private RegistroHelper helper;
     
     /**
      * Constructor por omisión.
@@ -49,17 +50,15 @@ public class AltaUsuario {
      */
     public AltaUsuario() {
         faceContext = FacesContext.getCurrentInstance();
-        httpServletRequest = (HttpServletRequest) faceContext.getExternalContext().getRequest();
-        helper = new RegistroHelper();
+        httpServletRequest = (HttpServletRequest)faceContext.getExternalContext().getRequest();
     }
     
     /**
      * Da de alta al usuario y lo redirige a su perfil.
      * @return Dirección de la vista perfil.
      */
-    public void darDeAlta() {
-
-        helper.registra(id,correo,contrasenia,nombre,apellidop,apellidom);
+    public String darDeAlta() {
+        return "registro";
     }
     
     /* MÉTODOS DE MODIFICADORES Y DE ACCESO PARA COMUNICARNOS CON LA VISTA */
