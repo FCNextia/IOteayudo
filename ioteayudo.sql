@@ -6,7 +6,7 @@ CREATE DATABASE IOteayudo
 
 CREATE TABLE usuario (
 	id_usuario INTEGER NOT NULL,
-	correo_usuario VARCHAR(255) NOT NULL CHECK(correo_usuario SIMILAR TO '([0-9A-Za-z -_.]+)@%.%)'),
+	correo_usuario VARCHAR(255) NOT NULL CHECK(correo_usuario SIMILAR TO '[0-9A-Za-z -_.]+@%.%'),
 	nombre_usuario VARCHAR(255) NOT NULL CHECK(nombre_usuario SIMILAR TO '[A-Za-z]+'),
 	apellido_paterno_usuario VARCHAR(255) NOT NULL CHECK(apellido_paterno_usuario SIMILAR TO '[A-Za-z]+'),
 	apellido_materno_usuario VARCHAR(255) NOT NULL CHECK(apellido_materno_usuario SIMILAR TO '[A-Za-z]+'),
