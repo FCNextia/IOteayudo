@@ -29,11 +29,13 @@ public class RegistroHelper {
        usuario.setApellidoMaternoUsuario(apellidoMa);
        usuario.setContraseniaUsuario(contrasenia);
        usuario.setTelefonoUsuario(0);
-       usuario.setAcercaDeUsuario(null);
-       session.save(usuario);
- 
-        //Commit the transaction
+       usuario.setAcercaDeUsuario("a");
+       session.persist(usuario);
        session.getTransaction().commit();
+       //session.save(usuario);
+       
+        //Commit the transaction
+       //session.getTransaction().commit();
        //HibernateUtil.shutdown();
     }
 }
