@@ -6,12 +6,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import logic.RegistroHelper;
-import modelo.Usuario;
-import org.hibernate.HibernateException; 
-import org.hibernate.Session; 
-import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 /**
  * Controlador que permite agregar un usuario a la base de datos.

@@ -32,6 +32,6 @@ public class RegistroHelper {
  
         //Commit the transaction
        session.getTransaction().commit();
-       HibernateUtil.shutdown();
+       //HibernateUtil.shutdown();
     }
 }
