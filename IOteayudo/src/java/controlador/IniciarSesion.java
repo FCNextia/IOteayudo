@@ -15,6 +15,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import logic.IniciarSesionHelper;
 
 
 /**
@@ -31,6 +32,7 @@ public class IniciarSesion {
     private final HttpServletRequest httpServletRequest; // Obtiene información de todas las peticiones de usuario.
     private final FacesContext faceContext; // Obtiene información de la aplicación
     private FacesMessage message; // Permite el envio de mensajes entre el bean y la vista
+    private IniciarSesionHelper helper;
 
     public IniciarSesion(HttpServletRequest httpServletRequest, FacesContext faceContext) {
         this.httpServletRequest = httpServletRequest;
@@ -54,25 +56,25 @@ public class IniciarSesion {
         this.contrasenia = contrasenia;
     }
     
-  /* public String iniciarSesion() {
-       modelo.Usuario login = helper.getLoginPorNombre(usuario);
+   public String iniciarSesion(String correo, String contrasenia) {
+       modelo.Usuario login = helper.getLoginPorNombre(correo);
         if (login != null) {
             try {
                 MessageDigest md = MessageDigest.getInstance("MD5");
-                md.update(contrasena.getBytes());
+                md.update(contrasenia.getBytes());
                 byte[] digest = md.digest();
                 StringBuilder sb = new StringBuilder();
                 for (byte b : digest) {
                     sb.append(String.format("%02x", b & 0xff));
                 }
-                if (sb.toString().equals(login.getPassword())) {
-                    httpServletRequest.getSession().setAttribute("sessionUsuario", usuario);
+                if (sb.toString().equals(login.getContraseniaUsuario())) {
+                    httpServletRequest.getSession().setAttribute("sessionUsuario", correo);
                     message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Acceso Correcto", null);
                     faceContext.addMessage(null, message);
                     return "acceso";
                 }
             } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario o contraseña incorrecto", null);
@@ -81,7 +83,7 @@ public class IniciarSesion {
         }
         return "index";
     }
-*/
+
     
     
 }
