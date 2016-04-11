@@ -28,6 +28,8 @@ public class RegistroHelper {
        usuario.setApellidoPaternoUsuario(apellidoPa);
        usuario.setApellidoMaternoUsuario(apellidoMa);
        usuario.setContraseniaUsuario(contrasenia);
+       usuario.setTelefonoUsuario(0);
+       usuario.setAcercaDeUsuario(null);
        session.save(usuario);
  
         //Commit the transaction
