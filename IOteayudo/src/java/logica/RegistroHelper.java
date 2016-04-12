@@ -1,4 +1,4 @@
-package logic;
+package logica;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
