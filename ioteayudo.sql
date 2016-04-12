@@ -1,8 +1,12 @@
+DROP DATABASE IOteayudo;
+
 CREATE DATABASE IOteayudo
    WITH OWNER = postgres
       ENCODING = 'UTF8'
       TABLESPACE = pg_default
       CONNECTION LIMIT = -1;
+
+\c ioteayudo
 
 CREATE TABLE usuario (
 	id_usuario INTEGER NOT NULL,
