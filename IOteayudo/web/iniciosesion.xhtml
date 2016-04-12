@@ -10,10 +10,8 @@
         <h:form class="formulario">
             <h2>Inicia Sesion</h2>
             <p>Ingresa tus datos: </p>
-            <!-- Este campo sólo es una prueba, el id se genera automáticamente -->
-            
             <p><h:inputText pt:placeholder="Correo electrónico: " value="#{iniciarSesion.correo}"/></p>
-            <p><h:inputText pt:placeholder="Contraseña: " value="#{iniciarSesion.contrasenia}"/></p>
+            <p><h:inputSecret pt:placeholder="Contraseña: " value="#{iniciarSesion.contrasenia}"/></p>
             <h:commandButton value="Iniciar Sesion" action="#{iniciarSesion.iniciarSesion()}"/>
         </h:form>
     </h:body>
