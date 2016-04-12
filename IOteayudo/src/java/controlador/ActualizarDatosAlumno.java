@@ -70,7 +70,7 @@ public class ActualizarDatosAlumno {
         int cel = Integer.parseInt(getCelular());
         adah.actualizaDatos(getCorreo(), getContrasenia(), getNombre(), 
                 getApellidop(),getApellidom(), cel, getAcercaDeMi());
-        return "configuracionalumno";
+        return "perfilalumno";
     }
     
     /* MÉTODOS DE MODIFICADORES Y DE ACCESO PARA COMUNICARNOS CON LA VISTA */
