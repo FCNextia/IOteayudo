@@ -10,13 +10,12 @@
         <h:form class="formulario">
             <h2>Configuración</h2>
             <p>Por favor, llena los siguientes campos: </p>
-            <p><h:inputText pt:placeholder="Correo electrónico: " value="#{actualizarDatosAlumno.correo}"/></p>
-            <p><h:inputText pt:placeholder="Contrasena: " value="#{actualizarDatosAlumno.contrasenia}"/></p>
+            <p><h:inputText pt:placeholder="Correo:" value="#{actualizarDatosAlumno.correo}"/></p>
+            <p><h:inputText pt:placeholder="Contraseña: " value="#{actualizarDatosAlumno.contrasenia}"/></p>
             <p><h:inputText pt:placeholder="Confirma tu contraseña: " value="#{actualizarDatosAlumno.confirmacion}"/></p>
             <p><h:inputText pt:placeholder="Nombre: " value="#{actualizarDatosAlumno.nombre}"/></p>
             <p><h:inputText pt:placeholder="Apellido paterno: " value="#{actualizarDatosAlumno.apellidop}"/></p>
             <p><h:inputText pt:placeholder="Apellido materno: " value="#{actualizarDatosAlumno.apellidom}"/></p>
-            <p><h:inputText pt:placeholder="Fecha de nacimiento: " value="#{actualizarDatosAlumno.fechaNacimiento}"/></p>
             <p><h:inputText pt:placeholder="Teléfono celular: " value="#{actualizarDatosAlumno.celular}"/></p>
             <p><h:inputTextarea pt:placeholder="Acerca de ti: " value="#{actualizarDatosAlumno.acercaDeMi}"/></p>
             <h:commandButton value="Actualizar Datos" action="#{actualizarDatosAlumno.actualizarDatos()}"/>
