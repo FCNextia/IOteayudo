@@ -1,5 +1,3 @@
-DROP DATABASE IOteayudo;
-
 CREATE DATABASE IOteayudo
    WITH OWNER = postgres
       ENCODING = 'UTF8'
@@ -23,10 +21,14 @@ CREATE TABLE alumno (
 	FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),
 	PRIMARY KEY(id_usuario));
 
+CREATE TABLE estudios (
+    nivel_estudios_tutor VARCHAR(255) NOT NULL PRIMARY KEY);
+
 CREATE TABLE tutor (
 	id_usuario INTEGER NOT NULL PRIMARY KEY,
 	nivel_estudios_tutor VARCHAR(255) NOT NULL,
-	FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario));
+	FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),
+    FOREIGN KEY(nivel_estudios_tutor) REFERENCES estudios(nivel_estudios_tutor));
 
 CREATE TABLE materia (
 	id_materia INTEGER NOT NULL PRIMARY KEY,
@@ -39,3 +41,12 @@ CREATE TABLE tutor_materia (
 	id_materia INTEGER NOT NULL,
 	FOREIGN KEY(id_usuario) REFERENCES tutor(id_usuario),
 	FOREIGN KEY(id_materia) REFERENCES materia(id_materia));
+
+INSERT INTO estudios (nivel_estudios_tutor) VALUES 
+('Bachillerato'),
+('Licenciatura'),
+('Maestría'),
+('Posgrado');
+                                                    
+
+
