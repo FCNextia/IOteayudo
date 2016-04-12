@@ -1,3 +1,5 @@
+DROP DATABASE IOteayudo;
+
 CREATE DATABASE IOteayudo
    WITH OWNER = postgres
       ENCODING = 'UTF8'
@@ -36,5 +38,4 @@ CREATE TABLE tutor_materia (
 	id_usuario INTEGER NOT NULL,
 	id_materia INTEGER NOT NULL,
 	FOREIGN KEY(id_usuario) REFERENCES tutor(id_usuario),
-	FOREIGN KEY(id_materia) REFERENCES materia(id_materia),
-	PRIMARY KEY(id_usuario));
+	FOREIGN KEY(id_materia) REFERENCES materia(id_materia));
