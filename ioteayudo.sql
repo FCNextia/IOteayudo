@@ -6,10 +6,10 @@ CREATE DATABASE IOteayudo
 
 CREATE TABLE usuario (
 	id_usuario INTEGER NOT NULL,
-	correo_usuario VARCHAR(255) NOT NULL CHECK(correo_usuario SIMILAR TO '[0-9A-Za-z -_.]+@%.%'),
+	correo_usuario VARCHAR(255) NOT NULL CHECK(correo_usuario SIMILAR TO '[0-9A-Za-z -_.áéíóúñü]+@%.%'),
 	nombre_usuario VARCHAR(255) NOT NULL CHECK(nombre_usuario SIMILAR TO '[A-Za-z]+'),
-	apellido_paterno_usuario VARCHAR(255) NOT NULL CHECK(apellido_paterno_usuario SIMILAR TO '[A-Za-z]+'),
-	apellido_materno_usuario VARCHAR(255) NOT NULL CHECK(apellido_materno_usuario SIMILAR TO '[A-Za-z]+'),
+	apellido_paterno_usuario VARCHAR(255) NOT NULL CHECK(apellido_paterno_usuario SIMILAR TO '[A-Za-záéíóúñü]+'),
+	apellido_materno_usuario VARCHAR(255) NOT NULL CHECK(apellido_materno_usuario SIMILAR TO '[A-Za-záéíóúñü]+'),
 	contrasenia_usuario VARCHAR(15) NOT NULL,
 	telefono_usuario INTEGER NOT NULL CHECK(telefono_usuario <= 9999999999),
 	acerca_de_usuario VARCHAR(255) NOT NULL,

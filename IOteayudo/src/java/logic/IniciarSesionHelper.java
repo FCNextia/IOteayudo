@@ -23,12 +23,11 @@ public class IniciarSesionHelper {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
 
-    public Usuario getLoginPorNombre(String nombre) {
-        Usuario usuario;
+    public Usuario getLoginPorCorreo(String correo) {
         try {
             Transaction tx = session.beginTransaction();
-            Query q = session.getNamedQuery("BuscaPorNombre").setString("usuario", nombre);
-            return (Usuario) q.uniqueResult();
+            Query q = session.getNamedQuery("BuscaPorCorreo").setString("correoUsuario", correo);
+            return (Usuario)q.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -32,8 +32,8 @@
         <one-to-one name="alumno" class="modelo.Alumno"></one-to-one>
         <one-to-one name="tutor" class="modelo.Tutor"></one-to-one>
     </class>
-     <sql-query name="BuscaPorCorreo">
-	<return alias="IniciarSesion" class="model.Usuario"/>
-	<![CDATA[select * from public.usuario where usuario.correo_usuario = :correoUsuario]]>
+    <sql-query name="BuscaPorCorreo">
+	<return alias="Usuario" class="modelo.Usuario"/>
+	<![CDATA[select * from public.usuario where correo_usuario = :correoUsuario]]>
     </sql-query>
 </hibernate-mapping>
