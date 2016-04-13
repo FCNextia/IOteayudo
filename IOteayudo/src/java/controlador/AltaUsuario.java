@@ -35,6 +35,8 @@ public class AltaUsuario {
     private String apellidom;
     /* Nos indica si es alumno o tutor. */
     private boolean esAlumno;
+    /* Nos indica si es alumno o tutor. */
+    private boolean esTutor;
     /* Obtiene información de las peticiones. */
     private final HttpServletRequest httpServletRequest;
     /* Obtiene información de la aplicación. */
@@ -55,14 +57,19 @@ public class AltaUsuario {
     }
     
     /**
-     * Da de alta al usuario y lo redirige a su perfil.
+     * Da de alta al usuario/alumno y lo redirige a su perfil.
      * @return Dirección de la vista perfil.
      */
-    public void darDeAlta() {
-        rh.registra(id, correo, nombre, apellidop, apellidom, contrasenia);
+    public void darDeAltaUsuario() {
+        if(esAlumno){
+            rh.registraUsuarioAlumno(getId(), getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
+        }else{
+            rh.registraUsuarioTutor(getId(), getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
+        }
     }
     
-    /* MÉTODOS DE MODIFICADORES Y DE ACCESO PARA COMUNICARNOS CON LA VISTA */
+    /** MÉTODOS DE MODIFICADORES Y DE ACCESO PARA COMUNICARNOS CON LA VISTA 
+     */
     public int getId() {
         return id;
     }
@@ -126,4 +133,14 @@ public class AltaUsuario {
     public void setEsAlumno(boolean esAlumno) {
         this.esAlumno = esAlumno;
     }
+
+    public boolean isEsTutor() {
+        return esTutor;
+    }
+
+    public void setEsTutor(boolean esTutor) {
+        this.esTutor = esTutor;
+    }
+    
+    
 }

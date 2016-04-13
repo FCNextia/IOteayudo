@@ -1,5 +1,8 @@
 package logica;
 
+import java.util.Date;
+import modelo.Alumno;
+import modelo.Tutor;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -17,11 +20,10 @@ public class RegistroHelper {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
 
-    public void registra(int id, String correo, String nombre, String apellidoPa, String apellidoMa, String contrasenia){
+    public void registraUsuarioAlumno(int id, String correo, String nombre, String apellidoPa, String apellidoMa, String contrasenia){
        Session session = HibernateUtil.getSessionFactory().openSession();
        session.beginTransaction();
        Usuario usuario = new Usuario();
-       
        usuario.setIdUsuario(id);
        usuario.setCorreoUsuario(correo);
        usuario.setNombreUsuario(nombre);
@@ -29,13 +31,31 @@ public class RegistroHelper {
        usuario.setApellidoMaternoUsuario(apellidoMa);
        usuario.setContraseniaUsuario(contrasenia);
        usuario.setTelefonoUsuario(0);
-       usuario.setAcercaDeUsuario("a");
+       usuario.setAcercaDeUsuario("vacio");
        session.persist(usuario);
+       usuario.setIdUsuario(id);
+       Alumno a = new Alumno(usuario);
+       session.persist(a);
        session.getTransaction().commit();
-       //session.save(usuario);
        
-        //Commit the transaction
-       //session.getTransaction().commit();
-       //HibernateUtil.shutdown();
+    }
+    
+    public void registraUsuarioTutor(int id, String correo, String nombre, String apellidoPa, String apellidoMa, String contrasenia){
+       Session session = HibernateUtil.getSessionFactory().openSession();
+       session.beginTransaction();
+       Usuario usuario = new Usuario();
+       usuario.setIdUsuario(id);
+       usuario.setCorreoUsuario(correo);
+       usuario.setNombreUsuario(nombre);
+       usuario.setApellidoPaternoUsuario(apellidoPa);
+       usuario.setApellidoMaternoUsuario(apellidoMa);
+       usuario.setContraseniaUsuario(contrasenia);
+       usuario.setTelefonoUsuario(0);
+       usuario.setAcercaDeUsuario("vacio");
+       session.persist(usuario);
+       usuario.setIdUsuario(id);
+       Tutor t = new Tutor(usuario, "vacio");
+       session.persist(t);
+       session.getTransaction().commit();     
     }
 }
