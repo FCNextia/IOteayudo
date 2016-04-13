@@ -54,11 +54,9 @@ INSERT INTO estudios (nivel_estudios_tutor) VALUES
                                                     
 --Función que regresa todos los tutores dada un nombre de una materia.
 CREATE OR REPLACE FUNCTION buscartutor(varchar)
-RETURNS TABLE (nombre varchar, apellido_paterno varchar, apellido_materno varchar ,
-               telefono integer, informacion varchar)
+RETURNS SETOF usuario
 AS $$
-SELECT a.nombre_usuario,a.apellido_paterno_usuario,a.apellido_materno_usuario,
-       a.telefono_usuario,a.acerca_de_usuario
+SELECT a.*
 FROM
 usuario as a
 INNER JOIN tutor as b ON (a.id_usuario = b.id_usuario)
