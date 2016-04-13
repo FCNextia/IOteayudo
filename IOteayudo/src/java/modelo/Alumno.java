@@ -39,6 +39,7 @@ public class Alumno  implements java.io.Serializable {
      */
     public Alumno(Usuario usuario, Date fechaNacimientoAlumno) {
        this.usuario = usuario;
+       this.idUsuario = usuario.getIdUsuario();
        this.fechaNacimientoAlumno = fechaNacimientoAlumno;
     }
    
