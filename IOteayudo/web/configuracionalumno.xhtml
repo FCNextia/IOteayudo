@@ -16,6 +16,10 @@
             <p><h:inputText pt:placeholder="Nombre: " value="#{actualizarDatosAlumno.nombre}"/></p>
             <p><h:inputText pt:placeholder="Apellido paterno: " value="#{actualizarDatosAlumno.apellidop}"/></p>
             <p><h:inputText pt:placeholder="Apellido materno: " value="#{actualizarDatosAlumno.apellidom}"/></p>
+            <p><i>Fecha de nacimiento</i></p>
+            <p><h:inputText pt:placeholder="Día" value="#{actualizarDatosAlumno.dia}"/></p>
+            <p><h:inputText pt:placeholder="Mes" value="#{actualizarDatosAlumno.mes}" /></p>
+            <p><h:inputText pt:placeholder="Año" value="#{actualizarDatosAlumno.anio}"/></p>
             <p><h:inputText pt:placeholder="Teléfono celular: " value="#{actualizarDatosAlumno.celular}"/></p>
             <p><h:inputTextarea pt:placeholder="Acerca de ti: " value="#{actualizarDatosAlumno.acercaDeMi}"/></p>
             <h:commandButton value="Actualizar Datos" action="#{actualizarDatosAlumno.actualizarDatos()}"/>

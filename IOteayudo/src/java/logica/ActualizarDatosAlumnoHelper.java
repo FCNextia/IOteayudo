@@ -5,6 +5,8 @@
  */
 package logica;
 
+import java.util.Date;
+import modelo.Alumno;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -27,11 +29,14 @@ public class ActualizarDatosAlumnoHelper {
      * @param contrasenia
      */
     public void actualizaDatos(String correo, String contrasenia, String nombre, 
-            String ap, String am, int cel, String ad) {
+            String ap, String am, int cel, String ad, Date fecha) {
         try {
             Transaction tx = session.beginTransaction();
             Query p = session.getNamedQuery("BuscaPorCorreo").setString("correoUsuario", correo);
             Usuario u = (Usuario)p.uniqueResult();
+            int id = u.getIdUsuario();
+            Query q = session.getNamedQuery("BuscaAlumnoPorID").setString("idUsuario", Integer.toString(id));
+            Alumno a = (Alumno)q.uniqueResult();
             u.setCorreoUsuario(correo);
             u.setContraseniaUsuario(contrasenia);
             u.setNombreUsuario(ap);
