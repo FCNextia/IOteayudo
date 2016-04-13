@@ -11,13 +11,13 @@ CREATE TABLE usuario (
 	apellido_paterno_usuario VARCHAR(255) NOT NULL CHECK(apellido_paterno_usuario SIMILAR TO '[A-Za-záéíóúñü]+'),
 	apellido_materno_usuario VARCHAR(255) NOT NULL CHECK(apellido_materno_usuario SIMILAR TO '[A-Za-záéíóúñü]+'),
 	contrasenia_usuario VARCHAR(15) NOT NULL,
-	telefono_usuario INTEGER NOT NULL CHECK(telefono_usuario <= 9999999999),
+	telefono_usuario VARCHAR(10) NOT NULL,
 	acerca_de_usuario VARCHAR(255) NOT NULL,
 	PRIMARY KEY(id_usuario));
 
 CREATE TABLE alumno (
 	id_usuario INTEGER NOT NULL,
-	fecha_nacimiento_alumno DATE CHECK ( date_part('year',age(fecha_nacimiento_alumno)) >= 15 ),
+	fecha_nacimiento_alumno DATE CHECK (date_part('year',age(fecha_nacimiento_alumno)) >= 15),
 	FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),
 	PRIMARY KEY(id_usuario));
 
@@ -36,5 +36,4 @@ CREATE TABLE tutor_materia (
 	id_usuario INTEGER NOT NULL,
 	id_materia INTEGER NOT NULL,
 	FOREIGN KEY(id_usuario) REFERENCES tutor(id_usuario),
-	FOREIGN KEY(id_materia) REFERENCES materia(id_materia),
-	PRIMARY KEY(id_usuario));
+	FOREIGN KEY(id_materia) REFERENCES materia(id_materia);
