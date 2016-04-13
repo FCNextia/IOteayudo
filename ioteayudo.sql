@@ -52,5 +52,19 @@ INSERT INTO estudios (nivel_estudios_tutor) VALUES
 ('Maestría'),
 ('Posgrado');
                                                     
-
-
+--Función que regresa todos los tutores dada un nombre de una materia.
+CREATE OR REPLACE FUNCTION buscartutor(varchar)
+RETURNS TABLE (nombre varchar, apellido_paterno varchar, apellido_materno varchar ,
+               telefono integer, informacion varchar)
+AS $$
+SELECT a.nombre_usuario,a.apellido_paterno_usuario,a.apellido_materno_usuario,
+       a.telefono_usuario,a.acerca_de_usuario
+FROM
+usuario as a
+INNER JOIN tutor as b ON (a.id_usuario = b.id_usuario)
+INNER JOIN tutor_materia as c ON (a.id_usuario = c.id_usuario)
+INNER JOIN materia as d ON (c.id_materia = d.id_materia)
+WHERE
+nombre_materia LIKE $1;
+$$
+LANGUAGE SQL;
