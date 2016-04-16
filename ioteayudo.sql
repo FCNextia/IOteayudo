@@ -36,4 +36,4 @@ CREATE TABLE tutor_materia (
 	id_usuario INTEGER NOT NULL,
 	id_materia INTEGER NOT NULL,
 	FOREIGN KEY(id_usuario) REFERENCES tutor(id_usuario),
-	FOREIGN KEY(id_materia) REFERENCES materia(id_materia);
+	FOREIGN KEY(id_materia) REFERENCES materia(id_materia));
