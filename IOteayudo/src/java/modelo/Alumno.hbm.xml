@@ -15,4 +15,8 @@
             <column name="fecha_nacimiento_alumno" length="13" />
         </property>
     </class>
+    <sql-query name="BuscaAlumnoPorID">
+	<return alias="Alumno" class="modelo.Alumno"/>
+	<![CDATA[select * from public.alumno where id_usuario = :idUsuario]]>
+    </sql-query>
 </hibernate-mapping>

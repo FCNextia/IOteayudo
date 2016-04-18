@@ -6,6 +6,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import logica.ActualizarDatosAlumnoHelper;
+import logica.IniciarSesionHelper;
 import modelo.Usuario;
 
 /**
@@ -31,8 +33,12 @@ public class ActualizarDatosAlumno {
     private String apellidop;
     /* Apellido materno del usario. */
     private String apellidom;
-    /* Fecha de nacimiento del alumno. */
-    private Date fechaNacimiento;
+    /* Día de nacimiento. */
+    private int dia;
+    /* Mes de nacimiento. */
+    private int mes;
+    /* Año de nacimiento. */
+    private int anio;
     /* Celular del alumno. */
     private String celular;
     /* Descripción del alumno. */
@@ -43,6 +49,7 @@ public class ActualizarDatosAlumno {
     private final FacesContext faceContext;
     /* Permite el envio de mensajes entre el bean y la vista. */
     private FacesMessage message;
+    private ActualizarDatosAlumnoHelper adah;
     
     /**
      * Constructor por omisión.
@@ -52,6 +59,7 @@ public class ActualizarDatosAlumno {
         faceContext = FacesContext.getCurrentInstance();
         httpServletRequest = 
                 (HttpServletRequest)faceContext.getExternalContext().getRequest();
+        adah = new ActualizarDatosAlumnoHelper();
     }
     
     /**
@@ -59,7 +67,11 @@ public class ActualizarDatosAlumno {
      * @return Dirección de la vista perfil.
      */
     public String actualizarDatos() {
-        return "configuracionalumno";
+        int cel = Integer.parseInt(getCelular());
+        Date fecha = new Date(getDia(), getMes(), getAnio());
+        adah.actualizaDatos(getCorreo(), getContrasenia(), getNombre(), 
+                getApellidop(),getApellidom(), cel, getAcercaDeMi(), fecha);
+        return "perfilalumno";
     }
     
     /* MÉTODOS DE MODIFICADORES Y DE ACCESO PARA COMUNICARNOS CON LA VISTA */
@@ -111,14 +123,6 @@ public class ActualizarDatosAlumno {
         this.apellidom = apellidom;
     }
 
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
     public String getCelular() {
         return celular;
     }
@@ -133,5 +137,29 @@ public class ActualizarDatosAlumno {
 
     public void setAcercaDeMi(String acercaDeMi) {
         this.acercaDeMi = acercaDeMi;
+    }
+
+    public int getDia() {
+        return dia;
+    }
+
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public int getAnio() {
+        return anio;
+    }
+
+    public void setAnio(int anio) {
+        this.anio = anio;
     }
 }

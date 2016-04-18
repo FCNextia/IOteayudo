@@ -5,6 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import logica.ActualizarDatosTutorHelper;
 import modelo.Usuario;
 
 /**
@@ -46,6 +47,7 @@ public class ActualizarDatosTutor {
     private final FacesContext faceContext;
     /* Permite el envio de mensajes entre el bean y la vista. */
     private FacesMessage message;
+    private ActualizarDatosTutorHelper adth;
     
     /**
      * Constructor por omisión.
@@ -55,6 +57,7 @@ public class ActualizarDatosTutor {
         faceContext = FacesContext.getCurrentInstance();
         httpServletRequest = 
                 (HttpServletRequest)faceContext.getExternalContext().getRequest();
+        adth = new ActualizarDatosTutorHelper();
     }
     
     /**
@@ -62,6 +65,9 @@ public class ActualizarDatosTutor {
      * @return Dirección de la vista perfil.
      */
     public String actualizarDatos() {
+        int cel = Integer.parseInt(getCelular());
+        adth.actualizaDatos(getCorreo(), getContrasenia(), getNombre(), 
+                getApellidop(),getApellidom(), cel, getAcercaDeMi());
         return "configuraciontutor";
     }
     

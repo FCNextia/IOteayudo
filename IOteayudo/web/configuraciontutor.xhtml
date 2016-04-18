@@ -10,8 +10,8 @@
         <h:form class="formulario">
             <h2>Configuración</h2>
             <p>Por favor, llena los siguientes campos: </p>
-            <p><h:inputText pt:placeholder="Correo electrónico: " value="#{actualizarDatosTutor.correo}"/></p>
-            <p><h:inputText pt:placeholder="Contrasena: " value="#{actualizarDatosTutor.contrasenia}"/></p>
+            <p><h:inputText pt:placeholder="Correo:" value="#{actualizarDatosTutor.correo}"/></p>
+            <p><h:inputText pt:placeholder="Contraseña: " value="#{actualizarDatosTutor.contrasenia}"/></p>
             <p><h:inputText pt:placeholder="Confirma tu contraseña: " value="#{actualizarDatosTutor.confirmacion}"/></p>
             <p><h:inputText pt:placeholder="Nombre: " value="#{actualizarDatosTutor.nombre}"/></p>
             <p><h:inputText pt:placeholder="Apellido paterno: " value="#{actualizarDatosTutor.apellidop}"/></p>
@@ -20,13 +20,6 @@
             <p><h:inputTextarea pt:placeholder="Acerca de ti: " value="#{actualizarDatosTutor.acercaDeMi}"/></p>
             <h:commandButton value="Actualizar Datos" action="#{actualizarDatosTutor.actualizarDatos()}"/>
         </h:form>
-        
-        <h:form class="formulario2">
-            <h2>Nuevas materias</h2>
-            <p>Por favor, llena los siguientes campos: </p>
-            <p><h:inputText pt:placeholder="Nombre: " value="#{actualizarDatosTutor.nuevoCurso}"/></p>
-            <p><h:inputText pt:placeholder="Área (1, 2, 3 ó 4): " value="#{actualizarDatosTutor.nuevaArea}"/></p>
-        </h:form>
-        <h:commandButton value="Agregar materia" action="#{actualizarDatosTutor.actualizarDatos()}"/>
+        <p><h:link value="Dar de baja" outcome="configuraciontutor"/></p>
     </h:body>
 </html>
