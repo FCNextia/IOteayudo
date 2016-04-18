@@ -43,7 +43,7 @@ public class IniciarSesion {
                 httpServletRequest.getSession().setAttribute("sessionUsuario", correo);
                 message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Acceso Correcto", null);
                 faceContext.addMessage(null, message);
-                return "pantallainicial";
+                return "configuracionalumno";
             } else {
                 message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario o contraseña incorrecto", null);
                 faceContext.addMessage(null, message);
