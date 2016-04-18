@@ -50,7 +50,7 @@ public class IniciarSesion {
                 return "iniciosesion";
             }
         }
-        return "iniciosession";
+        return "iniciosesion";
     }
     
     public String getCorreo() {
