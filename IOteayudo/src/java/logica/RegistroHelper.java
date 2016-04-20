@@ -35,6 +35,7 @@ public class RegistroHelper {
        session.persist(usuario);
        usuario.setIdUsuario(id);
        Alumno a = new Alumno(usuario);
+       a.setFechaNacimientoAlumno(new Date(93,10,27));
        session.persist(a);
        session.getTransaction().commit();
        
