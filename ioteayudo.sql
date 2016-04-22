@@ -1,3 +1,5 @@
+DROP DATABASE IOteayudo;
+
 CREATE DATABASE IOteayudo
    WITH OWNER = postgres
       ENCODING = 'UTF8'
@@ -21,10 +23,14 @@ CREATE TABLE alumno (
 	FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),
 	PRIMARY KEY(id_usuario));
 
+CREATE TABLE estudios (
+    nivel_estudios_tutor VARCHAR(255) NOT NULL PRIMARY KEY);
+
 CREATE TABLE tutor (
 	id_usuario INTEGER NOT NULL PRIMARY KEY,
 	nivel_estudios_tutor VARCHAR(255) NOT NULL,
-	FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario));
+	FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),
+    FOREIGN KEY(nivel_estudios_tutor) REFERENCES estudios(nivel_estudios_tutor));
 
 CREATE TABLE materia (
 	id_materia INTEGER NOT NULL PRIMARY KEY,
@@ -36,4 +42,26 @@ CREATE TABLE tutor_materia (
 	id_usuario INTEGER NOT NULL,
 	id_materia INTEGER NOT NULL,
 	FOREIGN KEY(id_usuario) REFERENCES tutor(id_usuario),
-	FOREIGN KEY(id_materia) REFERENCES materia(id_materia);
+	FOREIGN KEY(id_materia) REFERENCES materia(id_materia));
+
+INSERT INTO estudios (nivel_estudios_tutor) VALUES 
+('Bachillerato'),
+('Licenciatura'),
+('Maestría'),
+('Posgrado');
+                                                    
+--Función que regresa todos los tutores dada un nombre de una materia.
+CREATE OR REPLACE FUNCTION buscartutor(varchar)
+RETURNS SETOF usuario
+AS $$
+SELECT a.*
+FROM
+usuario as a
+INNER JOIN tutor as b ON (a.id_usuario = b.id_usuario)
+INNER JOIN tutor_materia as c ON (a.id_usuario = c.id_usuario)
+INNER JOIN materia as d ON (c.id_materia = d.id_materia)
+WHERE
+nombre_materia LIKE $1;
+$$
+LANGUAGE SQL;
+
