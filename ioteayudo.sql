@@ -6,8 +6,6 @@ CREATE DATABASE IOteayudo
       TABLESPACE = pg_default
       CONNECTION LIMIT = -1;
 
-\c ioteayudo
-
 CREATE TABLE usuario (
 	id_usuario INTEGER NOT NULL,
 	correo_usuario VARCHAR(255) NOT NULL CHECK(correo_usuario SIMILAR TO '[0-9A-Za-z -_.áéíóúñü]+@%.%'),
