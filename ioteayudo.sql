@@ -64,4 +64,3 @@ WHERE
 nombre_materia LIKE $1;
 $$
 LANGUAGE SQL;
-
