@@ -1,5 +1,6 @@
 package controlador;
 
+import java.util.Date;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -66,9 +67,10 @@ public class ActualizarDatosTutor {
      */
     public String actualizarDatos() {
         int cel = Integer.parseInt(getCelular());
-        adth.actualizaDatos(getCorreo(), getContrasenia(), getNombre(), 
+        int id = adth.actualizaDatos(getCorreo(), getContrasenia(), getNombre(), 
                 getApellidop(),getApellidom(), cel, getAcercaDeMi());
-        return "configuraciontutor";
+        adth.actualizaDatosTutor(id, getEscolaridad());
+        return "perfiltutor";
     }
     
     /* MÉTODOS DE MODIFICADORES Y DE ACCESO PARA COMUNICARNOS CON LA VISTA */

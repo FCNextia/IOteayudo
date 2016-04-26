@@ -24,7 +24,7 @@ CREATE TABLE alumno (
 	PRIMARY KEY(id_usuario));
 
 CREATE TABLE estudios (
-    nivel_estudios_tutor VARCHAR(255) NOT NULL PRIMARY KEY);
+    nivel_estudios_tutor VARCHAR(255));
 
 CREATE TABLE tutor (
 	id_usuario INTEGER NOT NULL PRIMARY KEY,

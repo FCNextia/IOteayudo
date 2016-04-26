@@ -5,6 +5,8 @@
  */
 package logica;
 
+import modelo.Alumno;
+import modelo.Tutor;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -26,25 +28,35 @@ public class ActualizarDatosTutorHelper {
      * Método que se encarga de actualizar los datos de un alumno.
      * @param contrasenia
      */
-    public void actualizaDatos(String correo, String contrasenia, String nombre, 
+    public int actualizaDatos(String correo, String contrasenia, String nombre, 
             String ap, String am, int cel, String ad) {
         try {
-            Transaction tx = session.beginTransaction();
+            session.beginTransaction();
             Query p = session.getNamedQuery("BuscaPorCorreo").setString("correoUsuario", correo);
             Usuario u = (Usuario)p.uniqueResult();
             u.setCorreoUsuario(correo);
             u.setContraseniaUsuario(contrasenia);
-            u.setNombreUsuario(ap);
+            u.setNombreUsuario(nombre);
             u.setApellidoPaternoUsuario(ap);
             u.setApellidoMaternoUsuario(am);
             u.setTelefonoUsuario(cel);
             u.setAcercaDeUsuario(ad);
             session.persist(u);
             session.getTransaction().commit();
+            return u.getIdUsuario();
         } catch (Exception e) {
             e.printStackTrace();
+            return -1;
         }
     }
     
-    
+    public void actualizaDatosTutor(int id, String nivel_estudios) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query p = session.getNamedQuery("BuscaTutorPorID").setInteger("idUsuario", id);
+        Tutor t = (Tutor)p.uniqueResult();
+        t.setNivelEstudiosTutor(nivel_estudios);
+        session.persist(t);
+        session.getTransaction().commit();
+    }
 }
