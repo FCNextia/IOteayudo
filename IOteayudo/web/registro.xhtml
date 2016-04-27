@@ -56,6 +56,7 @@
     <div class="well">
       <h3 class="text-center">Registro</h3>
       <br></br>
+    <h:form>          
       <h:inputText pt:placeholder="Nombre: " value="#{altaUsuario.nombre}" class="form-control"/>
       <br></br>
       <h:inputText pt:placeholder="Apellido paterno: " value="#{altaUsuario.apellidop}" class="form-control"/>
@@ -80,6 +81,7 @@
             
       <br></br>
         <h:commandButton value="Registrarse" action="#{altaUsuario.darDeAltaUsuario()}" class="btn btn-primary btn-lg btn-block"/>
+    </h:form>
         <hr></hr>
         <div class="row">
           <div class="col-md-5 col-md-offset-1">

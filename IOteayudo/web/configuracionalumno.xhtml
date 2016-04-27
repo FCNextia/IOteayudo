@@ -63,7 +63,8 @@
   <div class="col-md-6">
     <h3>Actualiza tus datos</h3>
     <br></br>
-    <h5>Cambiar nombre</h5>
+    <h:form>
+        <h5>Cambiar nombre</h5>
         <h:inputText pt:placeholder="Nombre: " value="#{actualizarDatosAlumno.nombre}" class="form-control"/>
         <br></br>
         <h5>Cambiar apellido</h5>
@@ -78,11 +79,15 @@
         <h:inputText pt:placeholder="Contraseña: " value="#{actualizarDatosAlumno.contrasenia}" class="form-control"/>
         <br></br>
         <h:inputText pt:placeholder="Confirma tu contraseña: " value="#{actualizarDatosAlumno.confirmacion}" class="form-control"/>
+        <h:commandButton value="Actualizar Datos" action="#{actualizarDatosAlumno.actualizarDatos()}" class="btn btn-primary btn-lg btn-block "/>
+                    
+    </h:form>
         <br></br>
 </div>
 <div class="col-md-6">
   <h3>Actualiza tus datos</h3>
   <br></br>
+  <h:form>      
   <h5>Fecha de nacimiento</h5>
   <br></br>
   <h:inputText pt:placeholder="Día" value="#{actualizarDatosAlumno.dia}" class="form-control"/>
@@ -94,6 +99,7 @@
   <h:inputText pt:placeholder="Teléfono celular: " value="#{actualizarDatosAlumno.celular}" class="form-control"/>
   <br></br>
   <h:inputTextarea pt:placeholder="Acerca de ti: " value="#{actualizarDatosAlumno.acercaDeMi}" class="form-control"/>
+</h:form>
   
   <br></br>
   <br></br>
@@ -103,7 +109,7 @@
   </div>
     <div class="row">
         <div class="col-md-12 text-center">
-            <h:commandButton value="Actualizar Datos" action="#{actualizarDatosAlumno.actualizarDatos()}" class="btn btn-primary btn-lg btn-block "/>
+
         </div>
     </div>
 </div>

@@ -54,6 +54,7 @@
     <div class="well">
       <h3 class="text-center">Inicia sesión</h3>
       <br></br>
+    <h:form>
       <h:inputText pt:placeholder="Correo electrónico: " value="#{iniciarSesion.correo}" class="form-control"/>
       <br></br>
       <h:inputSecret pt:placeholder="Contraseña: " value="#{iniciarSesion.contrasenia}" class="form-control"/>
@@ -64,6 +65,7 @@
           </label>
       </div>
       <h:commandButton value="Iniciar Sesion" action="#{iniciarSesion.iniciarSesion()}" class="btn btn-primary btn-block btn-lg"/>
+    </h:form>
       <hr></hr>
       <div class="row">
           <div class="col-md-5 col-md-offset-1">
