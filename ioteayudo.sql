@@ -1,10 +1,14 @@
 DROP DATABASE IOteayudo;
 
+
 CREATE DATABASE IOteayudo
    WITH OWNER = postgres
       ENCODING = 'UTF8'
       TABLESPACE = pg_default
       CONNECTION LIMIT = -1;
+
+\c ioteayudo
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
 CREATE TABLE usuario (
 	id_usuario INTEGER NOT NULL,
@@ -61,6 +65,6 @@ INNER JOIN tutor as b ON (a.id_usuario = b.id_usuario)
 INNER JOIN tutor_materia as c ON (a.id_usuario = c.id_usuario)
 INNER JOIN materia as d ON (c.id_materia = d.id_materia)
 WHERE
-nombre_materia LIKE $1;
+nombre_materia = $1;
 $$
 LANGUAGE SQL;
