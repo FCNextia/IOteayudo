@@ -1,10 +1,14 @@
 DROP DATABASE IOteayudo;
 
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+
 CREATE DATABASE IOteayudo
    WITH OWNER = postgres
       ENCODING = 'UTF8'
       TABLESPACE = pg_default
       CONNECTION LIMIT = -1;
+
+\c ioteayudo
 
 CREATE TABLE usuario (
 	id_usuario INTEGER NOT NULL,
@@ -13,18 +17,18 @@ CREATE TABLE usuario (
 	apellido_paterno_usuario VARCHAR(255) NOT NULL CHECK(apellido_paterno_usuario SIMILAR TO '[A-Za-záéíóúñü]+'),
 	apellido_materno_usuario VARCHAR(255) NOT NULL CHECK(apellido_materno_usuario SIMILAR TO '[A-Za-záéíóúñü]+'),
 	contrasenia_usuario VARCHAR(15) NOT NULL,
-	telefono_usuario VARCHAR(10) NOT NULL,
+	telefono_usuario INTEGER NOT NULL CHECK(telefono_usuario <= 9999999999),
 	acerca_de_usuario VARCHAR(255) NOT NULL,
 	PRIMARY KEY(id_usuario));
 
 CREATE TABLE alumno (
 	id_usuario INTEGER NOT NULL,
-	fecha_nacimiento_alumno DATE CHECK (date_part('year',age(fecha_nacimiento_alumno)) >= 15),
+	fecha_nacimiento_alumno DATE CHECK ( date_part('year',age(fecha_nacimiento_alumno)) >= 15 ),
 	FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),
 	PRIMARY KEY(id_usuario));
 
 CREATE TABLE estudios (
-    nivel_estudios_tutor VARCHAR(255));
+    nivel_estudios_tutor VARCHAR(255) NOT NULL PRIMARY KEY);
 
 CREATE TABLE tutor (
 	id_usuario INTEGER NOT NULL PRIMARY KEY,
@@ -61,6 +65,6 @@ INNER JOIN tutor as b ON (a.id_usuario = b.id_usuario)
 INNER JOIN tutor_materia as c ON (a.id_usuario = c.id_usuario)
 INNER JOIN materia as d ON (c.id_materia = d.id_materia)
 WHERE
-nombre_materia LIKE $1;
+nombre_materia = $1;
 $$
 LANGUAGE SQL;
