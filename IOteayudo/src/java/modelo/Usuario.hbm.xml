@@ -8,6 +8,13 @@
             <column name="id_usuario" />
             <generator class="assigned" />
         </id>
+        <id name="idUsuario" type="int" column="id_usuario">
+            <generator class="sequence">
+                <param name="sequence">usuario_pass</param>
+                <param name="table">Usuario</param>
+                <param name="column">id_usuario</param>
+            </generator>
+        </id>
         <property name="correoUsuario" type="string">
             <column name="correo_usuario" not-null="true" />
         </property>

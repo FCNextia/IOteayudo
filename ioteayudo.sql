@@ -7,24 +7,28 @@ CREATE DATABASE IOteayudo
       CONNECTION LIMIT = -1;
 
 CREATE TABLE usuario (
-	id_usuario INTEGER NOT NULL,
+	id_usuario INTEGER PRIMARY KEY,
 	correo_usuario VARCHAR(255) NOT NULL CHECK(correo_usuario SIMILAR TO '[0-9A-Za-z -_.áéíóúñü]+@%.%'),
 	nombre_usuario VARCHAR(255) NOT NULL CHECK(nombre_usuario SIMILAR TO '[A-Za-z]+'),
 	apellido_paterno_usuario VARCHAR(255) NOT NULL CHECK(apellido_paterno_usuario SIMILAR TO '[A-Za-záéíóúñü]+'),
 	apellido_materno_usuario VARCHAR(255) NOT NULL CHECK(apellido_materno_usuario SIMILAR TO '[A-Za-záéíóúñü]+'),
 	contrasenia_usuario VARCHAR(15) NOT NULL,
 	telefono_usuario VARCHAR(10) NOT NULL,
-	acerca_de_usuario VARCHAR(255) NOT NULL,
-	PRIMARY KEY(id_usuario));
+	acerca_de_usuario VARCHAR(255) NOT NULL);
+
+create sequence usuario_pass(
+  start with 1
+  increment by 1
+  maxvalue 99999
+  minvalue 1);
 
 CREATE TABLE alumno (
-	id_usuario INTEGER NOT NULL,
+	id_usuario INTEGER PRIMARY KEY,
 	fecha_nacimiento_alumno DATE CHECK (date_part('year',age(fecha_nacimiento_alumno)) >= 15),
-	FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),
-	PRIMARY KEY(id_usuario));
+	FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario));
 
 CREATE TABLE estudios (
-    nivel_estudios_tutor VARCHAR(255));
+    nivel_estudios_tutor VARCHAR(255) PRIMARY KEY);
 
 CREATE TABLE tutor (
 	id_usuario INTEGER NOT NULL PRIMARY KEY,
