@@ -31,7 +31,7 @@ public class Usuario  implements java.io.Serializable {
     }
 
 	
-    public Usuario(int idUsuario, String correoUsuario, String nombreUsuario, String apellidoPaternoUsuario, String apellidoMaternoUsuario, String contraseniaUsuario, int telefonoUsuario, String acercaDeUsuario) {
+    public Usuario(String correoUsuario, String nombreUsuario, String apellidoPaternoUsuario, String apellidoMaternoUsuario, String contraseniaUsuario, int telefonoUsuario, String acercaDeUsuario) {
         this.idUsuario = idUsuario;
         this.correoUsuario = correoUsuario;
         this.nombreUsuario = nombreUsuario;
@@ -41,7 +41,7 @@ public class Usuario  implements java.io.Serializable {
         this.telefonoUsuario = telefonoUsuario;
         this.acercaDeUsuario = acercaDeUsuario;
     }
-    public Usuario(int idUsuario, String correoUsuario, String nombreUsuario, String apellidoPaternoUsuario, String apellidoMaternoUsuario, String contraseniaUsuario, int telefonoUsuario, String acercaDeUsuario, Alumno alumno, Tutor tutor) {
+    public Usuario(String correoUsuario, String nombreUsuario, String apellidoPaternoUsuario, String apellidoMaternoUsuario, String contraseniaUsuario, int telefonoUsuario, String acercaDeUsuario, Alumno alumno, Tutor tutor) {
        this.idUsuario = idUsuario;
        this.correoUsuario = correoUsuario;
        this.nombreUsuario = nombreUsuario;
