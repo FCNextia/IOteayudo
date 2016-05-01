@@ -1,7 +1,5 @@
 DROP DATABASE IOteayudo;
 
-CREATE EXTENSION IF NOT EXISTS pg_trgm;
-
 CREATE DATABASE IOteayudo
    WITH OWNER = postgres
       ENCODING = 'UTF8'
@@ -9,6 +7,8 @@ CREATE DATABASE IOteayudo
       CONNECTION LIMIT = -1;
 
 \c ioteayudo
+
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
 CREATE TABLE usuario (
 	id_usuario INTEGER NOT NULL,
