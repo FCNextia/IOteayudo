@@ -59,7 +59,7 @@ public class RegistroHelper {
        session.persist(usuario);
        
        //usuario.setIdUsuario(id);
-       Tutor t = new Tutor(usuario, "vacio");
+       Tutor t = new Tutor(usuario);
        session.persist(t);
        session.getTransaction().commit();     
     }

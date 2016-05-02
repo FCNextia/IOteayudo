@@ -16,6 +16,10 @@ public class Tutor implements java.io.Serializable{
 
     public Tutor() {
     }
+    
+    public Tutor(Usuario usuario){
+        this.usuario = usuario;
+    }
 
 	
     public Tutor(Usuario usuario, String nivelEstudiosTutor) {
