@@ -21,7 +21,16 @@ public class BuscarTutor {
     private List<Usuario> tutores; //Lista en donde guardaremos los tutores de la busqueda
     private Usuario tutor; //Lista donde guardaremos el tutor a buscar
     private String materia; //La materia por la cual buscaremos un tutor
+    private boolean flag = true;
 
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+    
     public String getMateria() {
         return materia;
     }
@@ -37,7 +46,20 @@ public class BuscarTutor {
     
     public void encontrarTutor(){
         BuscarTutorHelper helper = new BuscarTutorHelper();
-        setTutores(helper.verificaTutor(materia));
+        //Como este metodo se invoca despues de haberle asignado la materia
+        //al bean. Se supone que el String materia no es nulo.
+        //Aun asi, se preguntara por si un usuario invoca primero este metodo
+        if(materia != null){
+            //String temp = getMateria();
+            String nueva = helper.verificaMateria(this.materia);
+            //Si temp == nueva significa que no debemos mostrar un mensaje
+            //de "quiza quisiste decir"
+            //flag = nueva != null ? temp.equals(nueva) : flag;
+            //Asignamos la variable nueva a materia, ya que esta
+            //esta correcta. Temp puede o no estar mal escrita.
+            setMateria(nueva);
+            setTutores(helper.verificaTutor(materia));
+        }
     }
     
     public Usuario getTutor() {
