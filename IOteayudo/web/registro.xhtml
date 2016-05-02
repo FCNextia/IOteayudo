@@ -69,12 +69,17 @@
       <br></br>
       <h:inputSecret pt:placeholder="Confirma tu contraseña: " value="#{altaUsuario.confirmacion}" class="form-control"/>
       <br></br>
-      <h2>Soy: </h2>
       <div class="row">
-          <h:selectOneMenu value="#{altaUsuario.esTutor}">
+          <div class="col-md-3 col-md-offset-1">
+              <h2>Soy: </h2>
+          </div>
+          <div class="col-md-8">      
+              <br/>
+          <h:selectOneMenu value="#{altaUsuario.esTutor}" class="form-control">
             <f:selectItem itemValue="true" itemLabel="Tutor" />
             <f:selectItem itemValue="false" itemLabel="Alumno" />	   							
-        </h:selectOneMenu>	
+          </h:selectOneMenu>	
+          </div>
       </div>
       <!--
       <div class="row">
