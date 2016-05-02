@@ -63,14 +63,15 @@ public class AltaUsuario {
     public void darDeAltaUsuario() {
         if(!esTutor){
             try {
-                rh.registraUsuarioAlumno(getId(), getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
+                rh.registraUsuarioAlumno(getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
             } catch (Exception e) {
                 message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos incorrectos", null);
                 faceContext.addMessage(null, message);
             }
         }else{
             try {
-            rh.registraUsuarioTutor(getId(), getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
+            rh.registraUsuarioTutor(
+                    getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
             } catch (Exception e ) {
                 message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos incorrectos", null);
                 faceContext.addMessage(null, message);

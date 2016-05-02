@@ -4,9 +4,12 @@
 <!-- Generated 9/04/2016 10:24:30 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Usuario" table="usuario" schema="public" optimistic-lock="version">
-        <id name="idUsuario" type="int">
-            <column name="id_usuario" />
-            <generator class="assigned" />
+        <id name="idUsuario" type="int" column="id_usuario">
+            <generator class="sequence">
+                <param name="sequence">usuario_pass</param>
+                <param name="table">Usuario</param>
+                <param name="column">id_usuario</param>
+            </generator>
         </id>
         <property name="correoUsuario" type="string">
             <column name="correo_usuario" not-null="true" />

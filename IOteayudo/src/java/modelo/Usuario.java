@@ -1,6 +1,13 @@
 package modelo;
 // Generated 9/04/2016 10:24:29 AM by Hibernate Tools 4.3.1
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+
 
 
 /**
@@ -24,7 +31,7 @@ public class Usuario  implements java.io.Serializable {
     }
 
 	
-    public Usuario(int idUsuario, String correoUsuario, String nombreUsuario, String apellidoPaternoUsuario, String apellidoMaternoUsuario, String contraseniaUsuario, int telefonoUsuario, String acercaDeUsuario) {
+    public Usuario(String correoUsuario, String nombreUsuario, String apellidoPaternoUsuario, String apellidoMaternoUsuario, String contraseniaUsuario, int telefonoUsuario, String acercaDeUsuario) {
         this.idUsuario = idUsuario;
         this.correoUsuario = correoUsuario;
         this.nombreUsuario = nombreUsuario;
@@ -34,7 +41,7 @@ public class Usuario  implements java.io.Serializable {
         this.telefonoUsuario = telefonoUsuario;
         this.acercaDeUsuario = acercaDeUsuario;
     }
-    public Usuario(int idUsuario, String correoUsuario, String nombreUsuario, String apellidoPaternoUsuario, String apellidoMaternoUsuario, String contraseniaUsuario, int telefonoUsuario, String acercaDeUsuario, Alumno alumno, Tutor tutor) {
+    public Usuario(String correoUsuario, String nombreUsuario, String apellidoPaternoUsuario, String apellidoMaternoUsuario, String contraseniaUsuario, int telefonoUsuario, String acercaDeUsuario, Alumno alumno, Tutor tutor) {
        this.idUsuario = idUsuario;
        this.correoUsuario = correoUsuario;
        this.nombreUsuario = nombreUsuario;
@@ -47,10 +54,14 @@ public class Usuario  implements java.io.Serializable {
        this.tutor = tutor;
     }
    
+    @Id 
+    @SequenceGenerator(name="idUsuario",sequenceName="usuario_pass", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="idUsuario")
+    @Column(name="id_usuario")
     public int getIdUsuario() {
         return this.idUsuario;
     }
-    
+   
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
