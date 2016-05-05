@@ -69,13 +69,13 @@ public class AltaUsuario {
                 faceContext.addMessage(null, message);
             }
         }else{
-            try {
+            //try {
             rh.registraUsuarioTutor(
                     getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
-            } catch (Exception e ) {
-                message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos incorrectos", null);
-                faceContext.addMessage(null, message);
-            }
+            //} catch (Exception e ) {
+              //  message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos incorrectos", null);
+                //faceContext.addMessage(null, message);
+            //}
         }
     }
     
