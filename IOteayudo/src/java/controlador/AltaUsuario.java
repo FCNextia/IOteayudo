@@ -59,17 +59,20 @@ public class AltaUsuario {
     /**
      * Da de alta al usuario/alumno y lo redirige a su perfil.
      */
-    public void darDeAltaUsuario() {
+    public String darDeAltaUsuario() {
         if(!esTutor){
             try {
                 rh.registraUsuarioAlumno(getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
+                return "pantallainicial";
             } catch (Exception e) {
                 message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos incorrectos", null);
                 faceContext.addMessage(null, message);
+                return "registro";
             }
         }else{
             rh.registraUsuarioTutor(
                     getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
+            return "pantallainicial";
         }
     }
     
