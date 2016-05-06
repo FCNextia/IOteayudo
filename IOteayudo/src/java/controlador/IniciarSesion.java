@@ -5,10 +5,6 @@
  */
 package controlador;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -41,8 +37,6 @@ public class IniciarSesion {
         if (usuario != null) {
             if (getContrasenia().equals(usuario.getContraseniaUsuario())) {
                 httpServletRequest.getSession().setAttribute("sessionUsuario", correo);
-                //message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Acceso Correcto", null);
-                //faceContext.addMessage(null, message);
                 boolean esAlumno = helper.esAlumno(usuario.getIdUsuario());
                 if (esAlumno)
                     return "perfilalumno";

@@ -7,8 +7,6 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import logica.ActualizarDatosAlumnoHelper;
-import logica.IniciarSesionHelper;
-import modelo.Usuario;
 
 /**
  * Controlador que permite agregar un usuario a la base de datos.
@@ -49,6 +47,7 @@ public class ActualizarDatosAlumno {
     private final FacesContext faceContext;
     /* Permite el envio de mensajes entre el bean y la vista. */
     private FacesMessage message;
+    /* Helper que se encargará de acltualizar los datos. */
     private ActualizarDatosAlumnoHelper adah;
     
     /**
@@ -67,14 +66,18 @@ public class ActualizarDatosAlumno {
      * @return Dirección de la vista perfil.
      */
     public String actualizarDatos() {
+        /* Convertirmos el teléfono a número. */
         long cel = Long.parseLong(getCelular());
+        /* Obtenemos la sesión actual */
         CerrarSesion cs = new CerrarSesion();
-        String correo = cs.getCorreo();
-        //Date fecha = new Date(93, 11, 27);
+        String mail = cs.getCorreo();
+        /* Obtenemos la fecha. */
         Date fecha = new Date(getAnio(), getMes()-1, getDia());
-        int id = adah.actualizaDatos(correo, getContrasenia(), getNombre(), 
+        int id = adah.actualizaDatos(mail, getContrasenia(), getNombre(), 
                 getApellidop(),getApellidom(), cel, getAcercaDeMi());
+        /* Actualizamos los datos del alumno. */
         adah.actualizaDatosAlumno(id, fecha);
+        /* Redirigimos al perfil del alumno. */
         return "perfilalumno";
     }
     

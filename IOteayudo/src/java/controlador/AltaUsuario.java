@@ -10,7 +10,7 @@ import org.hibernate.SessionFactory;
 
 /**
  * Controlador que permite agregar un usuario a la base de datos.
- * @author Manuel Soto Romero.
+ * @author 
  * @version 1.0
  */
 @ManagedBean
@@ -58,7 +58,6 @@ public class AltaUsuario {
     
     /**
      * Da de alta al usuario/alumno y lo redirige a su perfil.
-     * @return Dirección de la vista perfil.
      */
     public void darDeAltaUsuario() {
         if(!esTutor){
@@ -69,23 +68,9 @@ public class AltaUsuario {
                 faceContext.addMessage(null, message);
             }
         }else{
-            //try {
             rh.registraUsuarioTutor(
                     getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
-            //} catch (Exception e ) {
-              //  message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos incorrectos", null);
-                //faceContext.addMessage(null, message);
-            //}
         }
-    }
-    
-    private boolean valida(String cadena) {
-        for (int i = 0; i < cadena.length(); i++) {
-            char c = cadena.charAt(id);
-            if (!Character.isLetter(c))
-                return false;
-        }
-        return true;
     }
     
     /** MÉTODOS DE MODIFICADORES Y DE ACCESO PARA COMUNICARNOS CON LA VISTA 

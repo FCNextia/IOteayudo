@@ -3,9 +3,7 @@ package logica;
 import java.util.Date;
 import modelo.Alumno;
 import modelo.Tutor;
-import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import modelo.Usuario;
 
 /**
@@ -24,8 +22,6 @@ public class RegistroHelper {
        Session session = HibernateUtil.getSessionFactory().openSession();
        session.beginTransaction();
        Usuario usuario = new Usuario();
-       
-       //usuario.setIdUsuario(id);
        usuario.setCorreoUsuario(correo);
        usuario.setNombreUsuario(nombre);
        usuario.setApellidoPaternoUsuario(apellidoPa);
@@ -34,8 +30,6 @@ public class RegistroHelper {
        usuario.setTelefonoUsuario(0);
        usuario.setAcercaDeUsuario("vacio");
        session.persist(usuario);
-       
-       //usuario.setIdUsuario(id);
        Alumno a = new Alumno(usuario);
        a.setFechaNacimientoAlumno(new Date(93,10,27));
        session.persist(a);
@@ -47,8 +41,6 @@ public class RegistroHelper {
        Session session = HibernateUtil.getSessionFactory().openSession();
        session.beginTransaction();
        Usuario usuario = new Usuario();
-       
-       //usuario.setIdUsuario(id);
        usuario.setCorreoUsuario(correo);
        usuario.setNombreUsuario(nombre);
        usuario.setApellidoPaternoUsuario(apellidoPa);
@@ -57,8 +49,6 @@ public class RegistroHelper {
        usuario.setTelefonoUsuario(0);
        usuario.setAcercaDeUsuario("vacio");
        session.persist(usuario);
-       
-       //usuario.setIdUsuario(id);
        Tutor t = new Tutor(usuario);
        session.persist(t);
        session.getTransaction().commit();     
