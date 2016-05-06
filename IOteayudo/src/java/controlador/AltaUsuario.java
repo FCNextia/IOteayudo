@@ -60,19 +60,26 @@ public class AltaUsuario {
      * Da de alta al usuario/alumno y lo redirige a su perfil.
      */
     public String darDeAltaUsuario() {
-        if(!esTutor){
-            try {
-                rh.registraUsuarioAlumno(getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
+        if (getContrasenia().equals(getConfirmacion())) {
+            if(!esTutor){
+                try {
+                    rh.registraUsuarioAlumno(getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
+                    return "pantallainicial";
+                } catch (Exception e) {
+                    message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos incorrectos", null);
+                    faceContext.addMessage(null, message);
+                    return "registro";
+                }
+            }else{
+                rh.registraUsuarioTutor(
+                        getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
                 return "pantallainicial";
-            } catch (Exception e) {
-                message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos incorrectos", null);
-                faceContext.addMessage(null, message);
-                return "registro";
+            
             }
-        }else{
-            rh.registraUsuarioTutor(
-                    getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
-            return "pantallainicial";
+        } else {
+        message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Las contraseñas no coinciden", null);
+                    faceContext.addMessage(null, message);
+        return "registro";
         }
     }
     

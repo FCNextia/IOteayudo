@@ -23,6 +23,7 @@ public class BuscarTutorHelper {
         List<Usuario> tutores;
         Query q = session.getNamedQuery("BuscarTutor").setString("nombreMateria", materia);
         tutores = (List<Usuario>) q.list();
+        //tx.rollback();
         return tutores;
     }
 
@@ -31,7 +32,9 @@ public class BuscarTutorHelper {
         try{
             Query q = session.getNamedQuery("BuscarMateria").setString("materia", materia);
             materias = (List<Materia>) q.list();
+            //tx.rollback();
             return materias.get(0).getNombreMateria();
+           
         }catch(IndexOutOfBoundsException e){
             return "";
         }
