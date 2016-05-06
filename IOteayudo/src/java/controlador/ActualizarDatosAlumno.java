@@ -67,7 +67,7 @@ public class ActualizarDatosAlumno {
      * @return Dirección de la vista perfil.
      */
     public String actualizarDatos() {
-        int cel = Integer.parseInt(getCelular());
+        long cel = Long.parseLong(getCelular());
         Date fecha = new Date(getAnio(), getMes()-1, getDia());
         int id = adah.actualizaDatos(getCorreo(), getContrasenia(), getNombre(), 
                 getApellidop(),getApellidom(), cel, getAcercaDeMi());

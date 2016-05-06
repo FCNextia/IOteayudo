@@ -26,7 +26,7 @@
         <property name="contraseniaUsuario" type="string">
             <column name="contrasenia_usuario" length="15" not-null="true" />
         </property>
-        <property name="telefonoUsuario" type="int">
+        <property name="telefonoUsuario" type="long">
             <column name="telefono_usuario" not-null="true" />
         </property>
         <property name="acercaDeUsuario" type="string">

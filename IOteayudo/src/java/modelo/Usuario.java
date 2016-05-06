@@ -22,7 +22,7 @@ public class Usuario  implements java.io.Serializable {
      private String apellidoPaternoUsuario;
      private String apellidoMaternoUsuario;
      private String contraseniaUsuario;
-     private int telefonoUsuario;
+     private long telefonoUsuario;
      private String acercaDeUsuario;
      private Alumno alumno;
      private Tutor tutor;
@@ -31,7 +31,7 @@ public class Usuario  implements java.io.Serializable {
     }
 
 	
-    public Usuario(String correoUsuario, String nombreUsuario, String apellidoPaternoUsuario, String apellidoMaternoUsuario, String contraseniaUsuario, int telefonoUsuario, String acercaDeUsuario) {
+    public Usuario(String correoUsuario, String nombreUsuario, String apellidoPaternoUsuario, String apellidoMaternoUsuario, String contraseniaUsuario, long telefonoUsuario, String acercaDeUsuario) {
         this.idUsuario = idUsuario;
         this.correoUsuario = correoUsuario;
         this.nombreUsuario = nombreUsuario;
@@ -41,7 +41,7 @@ public class Usuario  implements java.io.Serializable {
         this.telefonoUsuario = telefonoUsuario;
         this.acercaDeUsuario = acercaDeUsuario;
     }
-    public Usuario(String correoUsuario, String nombreUsuario, String apellidoPaternoUsuario, String apellidoMaternoUsuario, String contraseniaUsuario, int telefonoUsuario, String acercaDeUsuario, Alumno alumno, Tutor tutor) {
+    public Usuario(String correoUsuario, String nombreUsuario, String apellidoPaternoUsuario, String apellidoMaternoUsuario, String contraseniaUsuario, long telefonoUsuario, String acercaDeUsuario, Alumno alumno, Tutor tutor) {
        this.idUsuario = idUsuario;
        this.correoUsuario = correoUsuario;
        this.nombreUsuario = nombreUsuario;
@@ -100,11 +100,11 @@ public class Usuario  implements java.io.Serializable {
     public void setContraseniaUsuario(String contraseniaUsuario) {
         this.contraseniaUsuario = contraseniaUsuario;
     }
-    public int getTelefonoUsuario() {
+    public long getTelefonoUsuario() {
         return this.telefonoUsuario;
     }
     
-    public void setTelefonoUsuario(int telefonoUsuario) {
+    public void setTelefonoUsuario(long telefonoUsuario) {
         this.telefonoUsuario = telefonoUsuario;
     }
     public String getAcercaDeUsuario() {

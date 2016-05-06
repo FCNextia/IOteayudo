@@ -35,7 +35,7 @@ public class ActualizarDatosAlumnoHelper {
      * @param ad
      */
     public int actualizaDatos(String correo, String contrasenia, String nombre, 
-            String ap, String am, int cel, String ad) {
+            String ap, String am, long cel, String ad) {
         try {
             //Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
