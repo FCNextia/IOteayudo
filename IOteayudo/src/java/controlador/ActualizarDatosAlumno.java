@@ -68,8 +68,11 @@ public class ActualizarDatosAlumno {
      */
     public String actualizarDatos() {
         long cel = Long.parseLong(getCelular());
+        CerrarSesion cs = new CerrarSesion();
+        String correo = cs.getCorreo();
+        //Date fecha = new Date(93, 11, 27);
         Date fecha = new Date(getAnio(), getMes()-1, getDia());
-        int id = adah.actualizaDatos(getCorreo(), getContrasenia(), getNombre(), 
+        int id = adah.actualizaDatos(correo, getContrasenia(), getNombre(), 
                 getApellidop(),getApellidom(), cel, getAcercaDeMi());
         adah.actualizaDatosAlumno(id, fecha);
         return "perfilalumno";
