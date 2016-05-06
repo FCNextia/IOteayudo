@@ -29,7 +29,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-right" role="search">
-      <h:link value="Busca Tutor" outcome="busquedasl.xhtml" class="btn btn-primary"/>
+      <h:link value="Busca Tutor" outcome="busquedalg.xhtml" class="btn btn-primary"/>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -70,9 +70,9 @@
         <h:inputText pt:placeholder="Apellido materno: " value="#{actualizarDatosAlumno.apellidom}" class="form-control"/>
         <br></br>
         <h5>Cambiar contraseña</h5>
-        <h:inputText pt:placeholder="Contraseña: " value="#{actualizarDatosAlumno.contrasenia}" class="form-control"/>
+        <h:inputSecret pt:placeholder="Contraseña: " value="#{actualizarDatosAlumno.contrasenia}" class="form-control"/>
         <br></br>
-        <h:inputText pt:placeholder="Confirma tu contraseña: " value="#{actualizarDatosAlumno.confirmacion}" class="form-control"/>
+        <h:inputSecret pt:placeholder="Confirma tu contraseña: " value="#{actualizarDatosAlumno.confirmacion}" class="form-control"/>
         
         
   
@@ -106,6 +106,7 @@
             <div class="col-md-12">
                 <h:commandButton value="Actualizar Datos" action="#{actualizarDatosAlumno.actualizarDatos()}" class="btn btn-primary btn-lg btn-block "/>
             </div>
+            <br/>x
         </div>
         
 </h:form>        
@@ -129,4 +130,6 @@
   </div>
 </div>
     </h:body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="resource/js/bootstrap.min.js"></script>
 </html>
