@@ -41,10 +41,18 @@ public class IniciarSesion {
         if (usuario != null) {
             if (getContrasenia().equals(usuario.getContraseniaUsuario())) {
                 httpServletRequest.getSession().setAttribute("sessionUsuario", correo);
-                message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Acceso Correcto", null);
-                faceContext.addMessage(null, message);
-
-                return "perfilalumno";
+                //message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Acceso Correcto", null);
+                //faceContext.addMessage(null, message);
+                boolean esAlumno = helper.esAlumno(usuario.getIdUsuario());
+                if (esAlumno)
+                    return "perfilalumno";
+                boolean esTutor = helper.esTutor(usuario.getIdUsuario());
+                if (esTutor)
+                    return "perfiltutor";
+                else {
+                    message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario no encontrado.", null);
+                    faceContext.addMessage(null, message);
+                }
             } else {
                 message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario o contraseña incorrecto", null);
                 faceContext.addMessage(null, message);
