@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9/04/2016 10:24:30 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Usuario" table="usuario" schema="public" optimistic-lock="version">
+        <id name="idUsuario" type="int" column="id_usuario">
+            <generator class="sequence">
+                <param name="sequence">usuario_pass</param>
+                <param name="table">Usuario</param>
+                <param name="column">id_usuario</param>
+            </generator>
+        </id>
+        <property name="correoUsuario" type="string">
+            <column name="correo_usuario" not-null="true" />
+        </property>
+        <property name="nombreUsuario" type="string">
+            <column name="nombre_usuario" not-null="true" />
+        </property>
+        <property name="apellidoPaternoUsuario" type="string">
+            <column name="apellido_paterno_usuario" not-null="true" />
+        </property>
+        <property name="apellidoMaternoUsuario" type="string">
+            <column name="apellido_materno_usuario" not-null="true" />
+        </property>
+        <property name="contraseniaUsuario" type="string">
+            <column name="contrasenia_usuario" length="15" not-null="true" />
+        </property>
+        <property name="telefonoUsuario" type="int">
+            <column name="telefono_usuario" not-null="true" />
+        </property>
+        <property name="acercaDeUsuario" type="string">
+            <column name="acerca_de_usuario" not-null="true" />
+        </property>
+        <one-to-one name="alumno" class="modelo.Alumno"></one-to-one>
+        <one-to-one name="tutor" class="modelo.Tutor"></one-to-one>
+    </class>
+    <sql-query name="BuscaPorCorreo">
+	<return alias="Usuario" class="modelo.Usuario"/>
+	<![CDATA[select * from public.usuario where correo_usuario = :correoUsuario]]>
+    </sql-query>
+    <sql-query name="BuscarTutor">
+        <return alias="Usuario" class="modelo.Usuario"/>
+        <![CDATA[SELECT * FROM buscartutor(:nombreMateria)]]>
+    </sql-query>
+</hibernate-mapping>
