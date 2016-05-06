@@ -67,7 +67,9 @@ public class ActualizarDatosTutor {
      */
     public String actualizarDatos() {
         int cel = Integer.parseInt(getCelular());
-        int id = adth.actualizaDatos(getCorreo(), getContrasenia(), getNombre(), 
+        CerrarSesion cs = new CerrarSesion();
+        String correo = cs.getCorreo();
+        int id = adth.actualizaDatos(correo, getContrasenia(), getNombre(), 
                 getApellidop(),getApellidom(), cel, getAcercaDeMi());
         adth.actualizaDatosTutor(id, getEscolaridad());
         return "perfiltutor";
