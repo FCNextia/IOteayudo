@@ -24,7 +24,7 @@ CREATE TABLE usuario (
 	apellido_paterno_usuario VARCHAR(255) NOT NULL CHECK(apellido_paterno_usuario SIMILAR TO '[A-Za-záéíóúñü]+'),
 	apellido_materno_usuario VARCHAR(255) NOT NULL CHECK(apellido_materno_usuario SIMILAR TO '[A-Za-záéíóúñü]+'),
 	contrasenia_usuario VARCHAR(15) NOT NULL,
-	telefono_usuario INTEGER NOT NULL CHECK(telefono_usuario <= 9999999999),
+	telefono_usuario BIGINT NOT NULL CHECK(telefono_usuario <= 9999999999),
 	acerca_de_usuario VARCHAR(255) NOT NULL,
 	PRIMARY KEY(id_usuario));
 	
