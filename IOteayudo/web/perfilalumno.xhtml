@@ -20,7 +20,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">
-          <img src="IOteAyudo.png" class="img-responsive img" alt=""></img>
+          <img src="resource/img/IOteAyudo.png" class="img-responsive img" alt=""></img>
       </a>
     </div>
 
@@ -37,14 +37,80 @@
             <li><a href="#">Perfil</a></li>
             <li><h:link value="Configuración" outcome="configuracionalumno"/></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Cerrar sesión</a></li>
+            <li>
+                <h:form>
+                    <h:commandButton action="#{cerrarSesion.cerrarSession()}" value="Cerrar sesión" class="btn btn-danger btn-block" />
+                </h:form>  
+            </li>
           </ul>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-</div>  
+    
+    <br></br>  
+    <br></br>
+    <br></br>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="well">
+      <div class="row">
+        <div class="col-md-3">
+            <img src="resource/img/student.png" class="img-responsive" alt=""></img>
+        </div>
+        <div class="col-md-6">
+          <h1>Nombre del Usuario</h1>
+          <h3>Escolaridad actual</h3>
+          <h4>Ayudado recientemente en: (Tutorías recientes)</h4>
+          <h4>Calificación: 
+          <span class="glyphicon yellow  glyphicon-star" aria-hidden="true"></span>
+          <span class="glyphicon  yellow glyphicon-star" aria-hidden="true"></span>
+          <span class="glyphicon  yellow glyphicon-star" aria-hidden="true"></span>
+          <span class="glyphicon  yellow glyphicon-star" aria-hidden="true"></span>
+          <span class="glyphicon yellow  glyphicon-star" aria-hidden="true"></span>
+          </h4>
+        </div>
+        <div class="col-md-3">
+          <h2 class="text-center">¿Qué tutorías he tomado?</h2>
+          <br></br>
+          <button type="button" class="btn btn-primary btn-lg btn-block">Historial de tutorías</button>
+        </div>
+      </div>
+        <hr></hr>
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Acerca de (Nombre Usuario)</h2>
+          <div class="row">
+            <div class="col-md-4">
+              <h3>Trayectoria escolar</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam nam necessitatibus itaque cum ab quam maxime amet temporibus. Nesciunt ad deleniti vitae dolore nam minus earum praesentium placeat at similique.</p>
+            </div>
+            <div class="col-md-4">
+              <h3>Intereses</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, ipsam in quam voluptatibus explicabo voluptatum dolor laboriosam ex magnam, hic, aspernatur nobis, consectetur amet eaque dolorem cum nulla repellat facilis!</p>
+            </div>
+            <div class="col-md-4">
+              <h3>Visión a futuro</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae sint facilis dicta laudantium mollitia corporis sapiente ipsum quia minus velit obcaecati ipsam esse, debitis facere, dolores at totam officia atque?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+    <br></br>
+    <br></br>
+  <div class="col-md-12 text-center">
+    <p>IO te Ayudo 2016. Todos los derechos reservados.</p>
+  </div>
+</div>
+    
+</div><!-- SE CIERRA EL CONTAINER -->  
         
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
  <script src="resource/js/bootstrap.min.js"></script>

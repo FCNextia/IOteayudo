@@ -38,7 +38,11 @@
             <li><a href="#">Perfil</a></li>
             <li><h:link value="Configuración" outcome="configuraciontutor"/></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Cerrar sesión</a></li>
+            <li>
+                <h:form>
+                    <h:commandButton action="#{cerrarSesion.cerrarSession()}" value="Cerrar sesión" class="btn btn-danger btn-block" />
+                </h:form> 
+            </li>
           </ul>
         </li>
       </ul>
