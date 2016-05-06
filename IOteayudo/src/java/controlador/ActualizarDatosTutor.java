@@ -66,7 +66,7 @@ public class ActualizarDatosTutor {
      */
     public String actualizarDatos() {
         /* Convertirmos el teléfono a número. */
-        int cel = Integer.parseInt(getCelular());
+        long cel = Long.parseLong(getCelular());
         /* Obtenemos la sesión actual. */
         CerrarSesion cs = new CerrarSesion();
         String mail = cs.getCorreo();

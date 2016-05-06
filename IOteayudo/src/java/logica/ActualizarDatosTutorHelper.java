@@ -33,7 +33,7 @@ public class ActualizarDatosTutorHelper {
      * @return  ID del tutor.
      */
     public int actualizaDatos(String correo, String contrasenia, String nombre, 
-            String ap, String am, int cel, String ad) {
+            String ap, String am, long cel, String ad) {
         try {
             session.beginTransaction();
             Query p = session.getNamedQuery("BuscaPorCorreo").setString("correoUsuario", correo);
