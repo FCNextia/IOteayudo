@@ -1,89 +1,133 @@
 package controlador;
 
+import org.hibernate.TransactionException;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
+
 import logica.RegistroHelper;
-import org.hibernate.SessionFactory;
+import modelo.Usuario;
 
 /**
  * Controlador que permite agregar un usuario a la base de datos.
- * @author 
+ *
+ * @author
  * @version 1.0
  */
 @ManagedBean
 @RequestScoped
 public class AltaUsuario {
-    
-    /* DATOS SUFICIENTES PARA DAR DE ALTA A UN USUARIO. */
-    
-    /* ID del usuario. */
+
+    /*
+     * DATOS SUFICIENTES PARA DAR DE ALTA A UN USUARIO.
+     */
+
+    /*
+     * ID del usuario.
+     */
     private int id;
-    /* Correo electrónico del usuario. */
+    /*
+     * Correo electrónico del usuario.
+     */
     private String correo;
-    /* Contraseña del usuario. */
+    /*
+     * Contraseña del usuario.
+     */
     private String contrasenia;
-    /* Confirmación de la contraseña. */
+    /*
+     * Confirmación de la contraseña.
+     */
     private String confirmacion;
-    /* Nombre del usuario. */
+    /*
+     * Nombre del usuario.
+     */
     private String nombre;
-    /* Apellido paterno del usuario. */
+    /*
+     * Apellido paterno del usuario.
+     */
     private String apellidop;
-    /* Apellido materno del usario. */
+    /*
+     * Apellido materno del usario.
+     */
     private String apellidom;
-    /* Nos indica si es alumno o tutor. */
+    /*
+     * Nos indica si es alumno o tutor.
+     */
     private boolean esAlumno;
-    /* Nos indica si es alumno o tutor. */
+    /*
+     * Nos indica si es alumno o tutor.
+     */
     private boolean esTutor;
-    /* Obtiene información de las peticiones. */
-    private final HttpServletRequest httpServletRequest;
-    /* Obtiene información de la aplicación. */
+    /*
+     * Obtiene información de la aplicación.
+     */
     private final FacesContext faceContext;
-    /* Permite el envio de mensajes entre el bean y la vista. */
+    /*
+     * Permite el envio de mensajes entre el bean y la vista.
+     */
     private FacesMessage message;
-    private SessionFactory factory; 
-    private RegistroHelper rh;
-    
+    private final RegistroHelper rh;
+
     /**
-     * Constructor por omisión.
-     * Inicializa los objetos necesarios para comunicarnos con la vista.
+     * Constructor por omisión. Inicializa los objetos necesarios para
+     * comunicarnos con la vista.
      */
     public AltaUsuario() {
         faceContext = FacesContext.getCurrentInstance();
-        httpServletRequest = (HttpServletRequest)faceContext.getExternalContext().getRequest();
         rh = new RegistroHelper();
     }
-    
+
+    /**
+     * Construye un usuario con la información recibida por el
+     * formulario.
+     *
+     * @return Un nuevo usuario.
+     */
+    private Usuario nuevoUsuario() {
+        Usuario usuario = new Usuario();
+        usuario.setNombreUsuario(nombre);
+        usuario.setApellidoPaternoUsuario(apellidop);
+        usuario.setApellidoMaternoUsuario(apellidom);
+        usuario.setContraseniaUsuario(contrasenia);
+        usuario.setCorreoUsuario(correo);
+        usuario.setTelefonoUsuario(0);
+        usuario.setAcercaDeUsuario("vacío");
+        return usuario;
+    }
+
     /**
      * Da de alta al usuario/alumno y lo redirige a su perfil.
+     *
+     * @return La página de inicio si se creo correctamente el
+     * usuario, en caso contrario a la página de registro.
      */
     public String darDeAltaUsuario() {
         if (getContrasenia().equals(getConfirmacion())) {
-            if(!esTutor){
-                try {
-                    rh.registraUsuarioAlumno(getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
-                    return "pantallainicial";
-                } catch (Exception e) {
-                    message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos incorrectos", null);
-                    faceContext.addMessage(null, message);
-                    return "registro";
+            try {
+                Usuario usuario = nuevoUsuario();
+                if (!esTutor) {
+                    rh.registraUsuarioAlumno(usuario);
+                } else {
+                    rh.registraUsuarioTutor(usuario);
                 }
-            }else{
-                rh.registraUsuarioTutor(
-                        getCorreo(), getNombre(), getApellidop(), getApellidom(), getContrasenia());
                 return "pantallainicial";
-            
+            } catch (TransactionException tx) {
+                // TODO: Hay que ser más especificos con el tipo de error mostrado. (MAPA)
+                message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos incorrectos", null);
+                faceContext.addMessage(null, message);
+                return "registro";
             }
-        } else {
-        message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Las contraseñas no coinciden", null);
-                    faceContext.addMessage(null, message);
-        return "registro";
         }
+        message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Las contraseñas no coinciden", null);
+        faceContext.addMessage(null, message);
+        return "registro";
     }
-    
-    /** MÉTODOS DE MODIFICADORES Y DE ACCESO PARA COMUNICARNOS CON LA VISTA 
+
+    /**
+     * MÉTODOS DE MODIFICADORES Y DE ACCESO PARA COMUNICARNOS CON LA
+     * VISTA
      */
     public int getId() {
         return id;
@@ -156,6 +200,5 @@ public class AltaUsuario {
     public void setEsTutor(boolean esTutor) {
         this.esTutor = esTutor;
     }
-    
-    
+
 }
